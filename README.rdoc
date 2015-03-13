@@ -1,0 +1,30 @@
+== README
+
+Things you may want to cover:
+
+* Ruby version
+    Ruby 2.1.2
+
+* System dependencies
+    NodeJS
+    PostgreSQL 9.1+
+    Memcache
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+    To make work on local environment, following these steps except standard rails project initializing
+
+    npm install
+    grunt
+
+    sudo apt-get install memcache
