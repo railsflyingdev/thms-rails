@@ -1,0 +1,17 @@
+<%= form_for(@slim_event_date_reporting) do |f| %>
+  <% if @slim_event_date_reporting.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@slim_event_date_reporting.errors.count, "error") %> prohibited this slim_event_date_reporting from being saved:</h2>
+
+      <ul>
+      <% @slim_event_date_reporting.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

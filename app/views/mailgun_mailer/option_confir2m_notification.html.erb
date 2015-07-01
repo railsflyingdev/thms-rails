@@ -1,0 +1,94 @@
+
+
+table.container
+  tr
+    td
+      table.row
+        tr
+          td.wrapper.last
+            table.twelve.columns
+              tr
+                td
+                  hr style=("height:1px; border:none; color:#b6b6b6; background-color:#b6b6b6; margin: 0 auto;")
+                  p
+                    = "Hello #{@option.company.manager.profile.first_name},"
+                  br
+                  p
+                    = "Thank you for your recent confirmation of #{@option.event.name}."
+                  - if @option['selection']['notComing']
+                    br
+                    p We confirm you are not attending this event.
+                    br
+                  - if @option['selection']['notComing'].nil?
+                    | Please see below summary of your order:
+                    - unless @option['selection']['menu'].nil?
+                      p
+                        strong Menu
+                        br
+                        = "#{@option['selection']['menu']['name']} - $#{@option['selection']['menu']['price_cents'].to_i / 100} pp"
+                        br
+
+                    - unless @option['selection']['drinks'].nil? && @option['selection']['foodBeveragePairing'].nil? &&  @option['selection']['dessertWinePairing'].nil? && @option['selection']['standardDrinkList'].nil?
+                      table
+                        thead
+                          tr
+                            th Beverage Name
+                        tbody
+                          - unless @option['selection']['drinks'].nil?
+                            - for drink in @option['selection']['drinks'] do
+                              tr
+                                td = drink['name']
+                          - if @option['selection']['foodBeveragePairing']
+                            tr
+                              td Wine & Beer Pairings to suit selected menu
+                          - if @option['selection']['dessertWinePairing']
+                            tr
+                              td Dessert Wine Pairing
+                          - if @option['selection']['standardDrinkList']
+                            tr
+                              td Your Standard Drinks List
+                    - unless @option['selection']['snacks'].nil?
+                      table
+                        thead
+                          tr
+                            th Snack Name
+                            th Quantity
+                        tbody
+                          - for snack in @option['selection']['snacks'] do
+                            tr
+                              td = snack['name']
+                              td = snack['count']
+
+                    - if @option['selection']['parkingSpaces'].to_i > 0
+                      p
+                        strong Parking Spaces
+                        br
+                        = @option['selection']['parkingSpaces']
+                    p
+                      strong Host Details
+                      br
+                      = @option['selection']['host_details']
+
+                    p
+                      strong Additional Info:
+                      br
+                      = @option['selection']['notes']
+                  br
+                  p
+                    | Your confirmation details can also be found in our portal under "My Confirmations".
+                    br
+                    br
+                    | You can log in here:
+                    br
+                    a href="http://www.allphonesarena.com.au/Suites.aspx" Allphones Corporate Suites
+                    br
+                    br
+                    | We hope that your guests have a safe and enjoyable event!
+                  p
+                    |Regards,
+                    br
+                    |Kelly Macintosh
+                    br
+                    |Event Manager
+                    br
+                    |Corporate & VIP Services

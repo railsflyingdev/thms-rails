@@ -1,0 +1,66 @@
+wb = xlsx_package.workbook
+wb.use_shared_strings = true
+wb.add_worksheet(name: 'Client Orders') do |sheet|
+  wrap = wb.styles.add_style alignment: {wrap_text: true}
+  bold = wb.styles.add_style b: true
+  not_coming = wb.styles.add_style bg_color: 'ffa297'
+
+  event_title = wb.styles.add_style(
+      :b => true,
+      :sz => 20,
+      :border=>Axlsx::STYLE_THIN_BORDER,
+      :alignment=>{:horizontal => :center}
+  )
+  sheet.add_row ['','','','','','','','',@event_date.event.name], style: event_title
+  sheet.add_row ['','','','','','','','',@event_date.event_period.begin.strftime('%a %b %d %H:%M:%S %Y')], style: event_title
+
+  sheet.add_row ['Suite Number', 'Company Name', 'Company Contact', 'Parking Tickets', 'Menu', 'Beverages', 'Snacks', 'Host Details', 'Can Order Additional Items?', 'Notes'], style: bold
+
+  @event_date.confirmed_inventory_options.each do |confirmation|
+    confirmation.selection['drinks'] = confirmation.selection['drinks'] || []
+    confirmation.selection['snacks'] = confirmation.selection['snacks'] || []
+
+    row = [
+        confirmation.facility.name.scan(/\d/).join('').to_i,
+        confirmation.company.name,
+        confirmation.company.manager.email,
+        confirmation.selection['parkingSpaces']
+    ]
+
+    menu_name = confirmation.selection['menu'].nil? ? '' :  confirmation.selection['menu']['name']
+    row.push menu_name
+
+    # Get requested Drinks
+    drinks = confirmation.selection['drinks'].map do |drink|
+      drink['name']
+    end
+
+    # Standard Drinks, Wine & Beer Pairings & Dessert Pairings
+
+    drinks.push "Wine And Beer Pairings" if confirmation.selection['foodBeveragePairing']
+    drinks.push "Standard Drinks List" if confirmation.selection['standardDrinkList']
+    drinks.push "Dessert Wine Pairing" if confirmation.selection['dessertWinePairing']
+
+    row.push drinks.join("\r\n")
+
+
+    # Build Snacks
+    snacks = confirmation.selection['snacks'].map do |snack|
+      "#{snack['name']} - #{snack['count']}"
+    end
+
+    row.push snacks.join("\r\n")
+
+    row.push confirmation.selection['host_details']
+    row.push confirmation.selection['hostCanOrderAdditionalItems']
+    row.push confirmation.selection['notes']
+
+    if confirmation.selection['notComing']
+      sheet.add_row row, style: not_coming
+    else
+      sheet.add_row row, style: wrap
+    end
+
+  end
+
+end

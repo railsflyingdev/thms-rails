@@ -1,0 +1,31 @@
+doctype html
+html(ng-app="thms")
+  head
+    title Turnkey Hospitality Manager
+    link(rel='stylesheet' href='/stylesheets/style.css' media='screen')
+    link(rel='stylesheet' href='/stylesheets/print.css' media='print')
+    /link(href='http://fonts.googleapis.com/css?family=Montserrat|Maven+Pro' rel='stylesheet' type='text/css')
+    link(href='//cdnjs.cloudflare.com/ajax/libs/angular-ui/0.4.0/angular-ui.min.css' rel='stylesheet' type='text/css' )
+    script(src='//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+
+    script(src='//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular.min.js')
+    script(src='//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular-animate.min.js')
+    script(src='//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.min.js')
+
+    script(src='//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js')
+    /script(src='//cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.1.0/moment-timezone.min.js')
+    script(src='//cdnjs.cloudflare.com/ajax/libs/angular-moment/0.7.1/angular-moment.min.js')
+
+    script(src='//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js')
+    script(src='//cdnjs.cloudflare.com/ajax/libs/restangular/1.3.1/restangular.min.js')
+    script(src='//cdnjs.cloudflare.com/ajax/libs/angular-ui/0.4.0/angular-ui.min.js')
+    link(rel="stylesheet" type="text/css" href="//cloud.typography.com/6648072/771264/css/fonts.css" media='screen')
+    /script(src='//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap.min.js')
+    /script(src='//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js')
+
+    - if Rails.env.production?
+      script(src='/js/application.min.js')
+    - else
+      script(src='/js/application.js')
+
+  body(ui-view)

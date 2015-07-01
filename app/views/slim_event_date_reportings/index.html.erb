@@ -1,0 +1,23 @@
+<h1>Listing slim_event_date_reportings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @slim_event_date_reportings.each do |slim_event_date_reporting| %>
+      <tr>
+        <td><%= link_to 'Show', slim_event_date_reporting %></td>
+        <td><%= link_to 'Edit', edit_slim_event_date_reporting_path(slim_event_date_reporting) %></td>
+        <td><%= link_to 'Destroy', slim_event_date_reporting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Slim event date reporting', new_slim_event_date_reporting_path %>
