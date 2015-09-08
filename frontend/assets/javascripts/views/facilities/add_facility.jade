@@ -1,0 +1,18 @@
+div.panel
+   fieldset
+      legend New Facility
+      .field
+         select(ng-model='facility.type')
+            option(value="" selected) Facility Type
+            option(value="Suite") Suite
+            option(value="Parking") Parking
+      .field
+         input(type='text' placeholder='Facility Name' ng-model='facility.name' autofocus)
+      .field
+         input(type='number' placeholder='Facility Capacity' ng-model='facility.capacity' min='0')
+
+
+
+      .field.right
+         //button.grey(ui-sref='authenticated.main.events.add.dates') Next Page
+         button.dark-accent(ng-click='createFacility(facility)') Create Facility

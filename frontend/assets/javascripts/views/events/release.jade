@@ -1,0 +1,16 @@
+div.toolbar
+   button.dark-accent(ng-click="releaseToInventory()") Release To Inventory
+table
+   thead
+      tr
+         th
+            input(type="checkbox" ng-change="toggleSelectAll()" ng-model="allSelected")
+         th Company Name
+         th Facility Name
+
+   tbody
+      tr(ng-repeat="item in data")
+         td
+            input(type="checkbox" ng-model="item.selected")
+         td(ng-bind="item.company_name")
+         td(ng-bind="item.facility_name")

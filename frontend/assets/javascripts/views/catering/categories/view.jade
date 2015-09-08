@@ -1,0 +1,12 @@
+div.toolbar
+   button.dark-accent(ui-sref="authenticated.main.catering.menu.item.new({category_id: category.id})") Add Item
+
+table
+   thead
+      tr
+         th Name
+         th Price
+   tbody
+      tr(ng-repeat="item in category.menu_items")
+         td(ng-bind="item.name")
+         td {{item.price_cents/100 | currency}}

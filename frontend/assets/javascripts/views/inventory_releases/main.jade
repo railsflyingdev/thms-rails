@@ -1,0 +1,45 @@
+div.toolbar
+    .filters
+        .field.search
+            input(type="text" placeholder="Search" ng-model="filterModel.data.name" autofocus)
+            label
+                input(type="checkbox" ng-change="toggleShowUpcomingOnly()" ng-model="upcomingOnly")
+                | Show only upcoming events
+            select(ng-model="event_type" ng-options="t.value as t.caption for t in event_types")
+        //.field.select.small
+          select(ng-model="filterModel.data.status")
+            option(value="") Filter By Status
+            option(value="coming soon") Coming Soon
+            option(value="open") Open
+            option(value="closing soon") Closing Soon
+            option(value="closed") Closed
+    .actions
+        button.dark-accent(ng-click="newEvent()") Add Event
+table
+    thead
+        tr
+            th Name
+            th Location
+            th State
+            th EventDate
+            th TimeStart
+            th TimeEnd
+            th Department
+            th Class
+            th Category
+            th Description
+            th.actions Actions
+    tbody
+        tr(ng-repeat="inventory_release in data | orderBy:'data.first_event_date':false | filter:filterModel:strict")
+            td(ng-bind="inventory_release.data.event_name")
+            td(ng-bind="inventory_release.data.event_location")
+            td(ng-bind="inventory_release.data.event_state")
+            td(ng-bind="inventory_release.data.event_date")
+            td(ng-bind="inventory_release.data.event_start")
+            td(ng-bind="inventory_release.data.event_end")
+            td(ng-bind="inventory_release.data.department_name")
+            td(ng-bind="inventory_release.data.event_class")
+            td(ng-bind="inventory_release.data.event_category")
+            td(ng-bind="inventory_release.data.event_description")
+            td.actions
+                button.small.dark-accent(ui-sref="authenticated.main.inventory_release.view({inventory_release_id: inventory_release.data.id})") View

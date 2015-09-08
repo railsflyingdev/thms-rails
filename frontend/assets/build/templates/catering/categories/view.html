@@ -1,0 +1,1 @@
+<div class="toolbar"><button ui-sref="authenticated.main.catering.menu.item.new({category_id: category.id})" class="dark-accent">Add Item</button></div><table><thead><tr><th>Name</th><th>Price</th></tr></thead><tbody><tr ng-repeat="item in category.menu_items"><td ng-bind="item.name"></td><td>{{item.price_cents/100 | currency}}</td></tr></tbody></table>

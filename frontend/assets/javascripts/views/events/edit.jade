@@ -1,0 +1,18 @@
+.tabbed-panel
+  form(name="editForm" novalidate)
+    tabset
+      tab(heading="Details")
+        include forms/event
+      tab(heading="Event Control")
+        form
+          include forms/control
+  hr
+  .modal-footer
+    button.dark-accent.full(ng-disabled="editForm.$invalid" ng-click="save(event)") Save Changes
+//.panel
+//  form(name="form")
+//    legend Edit Event
+//
+//  hr
+//  .modal-footer
+//    button.dark-accent.full(ng-disabled="form.$invalid" ng-click="save(event)") Save Changes

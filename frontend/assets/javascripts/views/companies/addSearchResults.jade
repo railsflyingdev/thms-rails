@@ -1,0 +1,8 @@
+div.panel
+   div.employee-profile(ng-show="results")
+      i.icon-thin-191_user_profile_avatar(ng-show="results.minimalProfile.sex == 'Male'")
+      i.icon-thin-192_user_profile_avatar_female(ng-show="results.minimalProfile.sex == 'Female'")
+      div
+         div.name {{ results.minimalProfile.first_name + ' ' + results.minimalProfile.last_name}}
+         div(ng-bind="results.minimalCompany.name")
+      button.outline.dark-accent.small(ng-click="createRelationshipWithCompany(results.minimalCompany)") Add Company

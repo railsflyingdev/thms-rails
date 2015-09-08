@@ -1,0 +1,26 @@
+div.flex-center
+  div.panel
+    .top-bar
+      .title.big Confirm your attendance
+    hr
+    div.details
+      .flex-left
+        img(src="/{{details.event_data.file_name}}")
+      .flex-right
+        .pairing
+          .title Event Name
+          .desc(ng-bind="details.event_name")
+        .pairing
+          .title Event Date
+          .desc
+            span(ng-bind="details.start | amDateFormat: 'D'")
+            sup(ng-bind="details.start | amDateFormat: 'Do' | filterNumeric" )
+            span(ng-bind="details.start | amDateFormat: ' MMMM YYYY'" )
+            .time(ng-bind="details.start | amDateFormat: 'h:mm a'")
+      //.pairing
+      //   .title Facility
+      //   .desc(ng-bind="details.facilities[0].name")
+
+    .inner-align-right
+      button.grey(ng-click="notComing()") Not this time
+      button.dark-accent(ui-sref="authenticated.main.inventory.confirmOptions.menu") Yes

@@ -1,0 +1,29 @@
+div.panel.smallish
+   fieldset
+      legend New Employee
+      .field
+         input(type='email' placeholder='Email' ng-model='employee.email' autofocus)
+      //.field
+      //   input(type='password' placeholder='Password' ng-model='employee.password')
+      .field
+         select(ng-model='employee.department_id')
+            option(value='' selected) Department (optional)
+      //.field
+      //   label Can Login
+      //      input(type='checkbox')
+      //.field
+      //   input(type='text' placeholder='Firstname' ng-model='employee.profile.first_name')
+      //.field
+      //   input(type='text' placeholder='Lastname' ng-model='employee.profile.last_name')
+      //.field
+      //   select(ng-model='employee.profile.sex')
+      //      option(value='' selected) Gender
+      //      option(value='Male') Male
+      //      option(value='Female') Female
+      //      //option(value='RatherNotSay') Rather Not Say
+      //.field
+      //   input(type="date" placeholder="Birth Date" ng-model='employee.profile.dob' date-fix)
+
+      .field.right
+         //button.grey(ui-sref='authenticated.main.events.add.dates') Next Page
+         button.dark-accent(ng-click='createEmployee(employee)') Create Employee

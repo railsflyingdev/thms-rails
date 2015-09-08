@@ -1,0 +1,31 @@
+div.flex-center
+  #steps
+    .step(data-desc="Identify Class").done 1
+    .step(data-desc="Allocate To Business Units").done 2
+    .step(data-desc="Release Expiry").active 3
+    .step(data-desc="Automate Invitation") 4
+    //.step(data-desc="Facility Lease") 5
+.flex-center
+  .panel
+    .top-bar
+      .title Release Expiry
+    hr
+    .alert-info Sometimes Tickets are not used. After a certain number of days you can release to other teams or to everyone if tickets are not in demand.
+    form(novalidate name="form")
+      .field
+        label Number of days to remain available
+          input(type="number" required min="0" placeholder="0")
+      .field
+        select(ng-model='event_class')
+          option(ng-value="circus") Release to next class
+          option(ng-value="live_event") Place back in allocation pool
+          //option(ng-value="live_event") Class C
+          //option(ng-value="live_event") Class D
+          option(selected="" value="") Select Expiry Action
+
+
+    br
+    .toolbar
+      .actions.full
+        button.grey(ui-sref="authenticated.main.inventory.release.allocateBusinessUnits") Previous
+        button.dark-accent(ui-sref="authenticated.main.inventory.release.automateInvitations" ng-disabled="form.$invalid") Next

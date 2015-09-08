@@ -1,0 +1,72 @@
+#nav-header
+  img(src='/images/all-phones.png' width='75%' height='auto')
+ul
+  li.title Main
+
+  li.link(ui-sref="authenticated.main.home" ui-sref-active='active')
+    i.icon-thin-277_dashboard_full_fuel_gauge
+    a Dashboard
+  //authenticated.main.reporting.index
+  li.link(ui-sref="authenticated.main.reporting.index" active-class-on='authenticated.main.reporting' ng-if="Auth.currentUser.company.company_type == 'venue'")
+    i.icon-thin-355_analytics_line_chart_diagram_presentation
+    a Reporting
+  li.link(ui-sref="authenticated.main.event.client.index" active-class-on='authenticated.main.event authenticated.main.inventory' ng-if="Auth.currentUser.company.company_type == 'company'")
+    i.icon-thin-231_star_favorite
+    a Events
+  li.link(ui-sref="authenticated.main.audit.venue.index" active-class-on='authenticated.main.audit.venue' ng-if="Auth.currentUser.company.company_type == 'venue'")
+    i.icon-thin-299_drink_cocktail_disco_going_out_shake
+    a Confirmations
+    //li.link(ui-sref="authenticated.main.employee.index" ng-class="(currentState.contains('authenticated.main.employee')) && 'active'")
+    //   i.icon-thin-195_users_group
+       a Employees
+  //li.link(ng-if="Auth.currentUser.company.company_type == 'venue'" ui-sref="authenticated.main.tickets.index" active-class-on='authenticated.main.tickets')
+  //  i.icon-thin-376_movie_cinema_ticket
+  //  a Tickets
+
+  li.link(ng-if="Auth.currentUser.company.company_type == 'company'" ui-sref="authenticated.main.tickets.index" active-class-on='authenticated.main.tickets')
+    i.icon-thin-376_movie_cinema_ticket
+    a Tickets
+    span.notification(ng-bind="Tickets.count")
+
+ul
+  li.title Master Data Management
+    li.link(ui-sref="authenticated.main.event.index" active-class-on='authenticated.main.event' ng-if="Auth.currentUser.company.company_type == 'venue'")
+      i.icon-thin-231_star_favorite
+      a Events
+  li.link(ui-sref="authenticated.main.facility.index" active-class-on='authenticated.main.facility' ng-if="Auth.currentUser.company.company_type == 'venue'")
+    i.icon-thin-049_building_industry_factory
+    a Facilities
+  li.link(ui-sref="authenticated.main.company.index" active-class-on='authenticated.main.company' ng-if="Auth.currentUser.company.company_type == 'venue'")
+    i.icon-thin-360_hierarchy_diagram_structure
+    a Companies
+  li.link(ui-sref="authenticated.main.employee.index" active-class-on='authenticated.main.employee')
+    i.icon-thin-195_users_group
+    a Employees
+  //li.link(ui-sref="authenticated.main.ticket.index" ng-class="(currentState.contains('authenticated.main.tickets')) && 'active'")
+     i.icon-thin-376_movie_cinema_ticket
+     a Tickets
+     span.notification 18
+  li.link(ui-sref="authenticated.main.catering.index" active-class-on='authenticated.main.catering' ng-if="Auth.currentUser.company.company_type == 'venue'")
+    i.icon-thin-294_fork_knife_spoon_eating_restaurant_food
+    a Catering
+  li.link(ng-if="Auth.currentUser.company.company_type == 'venue'")
+    i.icon-thin-148_shopping_price_tag_bag_sale
+    a Merchandising
+  // li.link(ui-sref="authenticated.main.catering.menu.new" active-class-on='authenticated.main.catering.menu.new' ng-if="Auth.currentUser.company.company_type == 'venue'")
+  //   i.icon-thin-295_dish_cooking_eating_restaurant_food
+  //   a Menu Builder
+
+ul
+  li.title Auditing
+  li.link
+    i.icon-thin-029_wall_clock_time
+    a Event History
+  li.link(ui-sref="authenticated.main.audit.client.index" active-class-on='authenticated.main.audit.client' ng-if="Auth.currentUser.company.company_type == 'company'")
+    i.icon-thin-299_drink_cocktail_disco_going_out_shake
+    a My Confirmations
+
+ul(ng-if="Auth.currentUser.permissions.developer")
+   li.title Developers Only
+   li.link(ui-sref="authenticated.main.home.debug" ng-class="(currentState.contains('authenticated.main.home.debug')) && 'active'")
+      i.icon-thin-170_business_tie
+      a Debug Information

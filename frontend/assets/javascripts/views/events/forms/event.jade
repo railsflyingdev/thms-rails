@@ -1,0 +1,18 @@
+.field
+  select(ng-model='event.data.event_type' autofocus)
+    option(value="") Select Event Type
+    option(ng-value="circus") Circus
+    option(ng-value="live_event") Live Event
+    option(ng-value="sports") Sports
+    option(ng-value="childrens_entertainment") Childrens Entertainment
+.field
+  select(ng-model='event.data.status' required)
+    option(value="") Select Event Status
+    option(ng-value="Coming Soon") Coming Soon
+    option(ng-value="Open") Open
+    option(ng-value="Closing Soon") Closing Soon
+    option(ng-value="Closed") Closed
+.field
+  input(type="text" ng-model="event.data.name" placeholder="Name" required)
+.field
+  textarea(ng-model="event.data.description" placeholder="Description" required)

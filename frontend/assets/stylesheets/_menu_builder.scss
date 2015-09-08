@@ -1,0 +1,95 @@
+.catering.menu.builder {
+  #menu-items-container, #menu-builder {
+    .title { font-size: 1.6em }
+  }
+
+  #menu-items-container {
+    @include span-columns(6);
+  }
+
+  #menu-builder {
+    @include span-columns(5);
+    @include shift(1);
+  }
+
+  #menu-items-list {
+    overflow: scroll;
+    height: 700px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.4);
+    padding: 2em;
+  }
+  .menu-item {
+    @include display(flex);
+    border-bottom: 1px solid #efefef;
+    padding-bottom: 0.7em;
+    margin-bottom: 1em;
+    @include transition(all 0.5s);
+    //      &:last-of-type { border-bottom: none }
+
+    // start dragging
+    &.on-drag-enter {
+      width: 40px;
+    }
+
+    // hover over drag target
+    &.on-drag-hover {
+
+    }
+
+    & > .details {
+      @include flex(3);
+      line-height: 1.3em;
+
+      & > .name {
+        font-weight: bold;
+        color: #444;
+      }
+
+      & > .company {
+
+      }
+
+      & > .category {
+        font-size: 0.7em;
+        font-weight: lighter;
+        color: #666;
+      }
+    }
+
+    & > .actions {
+      @include flex(1);
+      @include display(flex);
+      @include align-items(center);
+
+      button {
+        @include flex(0 0 10em);
+        @include display(flex);
+        @include align-items(center);
+        i { font-size: 1.7em }
+
+      }
+
+      i {
+        font-size: 1.8em;
+      }
+    }
+  }
+  
+  #menu-builder {
+    .menu-item {
+      border: none;
+    }
+    .menu-section {
+      padding: 1em;
+      min-height: 8em;
+      border: 4px dashed #ccc;
+
+      border-radius: 1em;
+
+      input {
+        background-color: #ddd;
+        border: 1px solid #ccc;
+      }
+    }
+  }
+}

@@ -1,0 +1,159 @@
+$max-width: 100%;
+
+$masquerade-bar-height: 3em;
+
+$body-background-color: #ededed;
+$menu-bg-color: rgb(47,52,55);
+
+$body-font-color: #333;
+
+$header-bottom-border-colour: rgb(70,75,78);
+$logo-bg-color: rgb(37,41,42);
+$accent-orange: rgb(253, 150, 62);
+
+$first: #6b47d1;
+$second: #b947d1;
+$third: #dc4b89;
+$fourth:  #f15e52;
+$fifth: rgb(241, 152, 82);
+$sixth:  #f1b752;
+$white: #fff;
+
+// Good Accent Colours
+$dark-blau: #3864c8;
+$pretty-pink: #dc4b89;
+
+
+//$main-accent: rgb(238, 67, 80);
+$main-accent: $fourth;
+$darkened-main-accent: darken($main-accent, 5);
+
+$menu-button-color: rgb(68,72,75);
+$menu-text-color: rgb(216,221,224);
+$menu-heading-color: rgb(115,115,117);
+
+$menu-bg-color-active: $body-background-color;
+$menu-text-color-active: $menu-button-color;
+
+$body-font-family: 'Gotham Rounded SSm A', 'Gotham Rounded SSm B';
+$alt-body-font-family: "Gotham SSm A", "Gotham SSm B";
+//$form-font-family: 'Montserrat', sans-serif;
+$form-font-family: $body-font-family;
+$form-font-weight: 500;
+$form-outline-color: rgba($fourth, 0.5);
+
+table {
+  font-family: 'Whitney SSm A', 'Whitney SSm B';
+
+}
+
+$radius-amount: 3px;
+
+$header-height: 86;
+
+$prefix-for-microsoft: true;
+$prefix-for-mozilla: true;
+$prefix-for-opera: true;
+$prefix-for-webkit: true;
+
+
+$navbar-width: 19rem;
+
+.clickable {
+  cursor: pointer;
+}
+
+@mixin flat-button($base-color: #00A1CB, $radius-amount: 3px) {
+  @include transition(background 0.2s);
+  font-family: $body-font-family;
+  padding: rem(10) rem(30);
+
+  background-color: $base-color;
+  border: 1px solid darken($base-color, 7);
+  color: #FFF;
+  font-size: 0.8rem;
+  border-radius: $radius-amount;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  &.full {
+    width: 100% !important;
+  }
+
+  &.outline {
+    @include transition(all 0s);
+    background-color: transparent;
+    color: $main-accent;
+    & > i { font-weight: bold; font-weight: 1rem }
+    & > i + span {margin-left: 0.4rem;}
+    &:hover {
+      color: $white;
+    }
+  }
+
+  &:hover {
+    background-color: darken($base-color, 10);
+    border: 1px solid darken($base-color, 12);
+  }
+
+  &:active {
+    background-color: darken($base-color, 20);
+    border: 1px solid darken($base-color, 22);
+  }
+
+  &:disabled {
+    background-color: desaturate($base-color, 50);
+    border: 1px solid desaturate($base-color, 40);
+    cursor: inherit;
+  }
+
+  &.small {
+    padding: em(5) em(15);
+    font-size: 0.7rem;
+  }
+
+  &.tiny {
+    padding: em(2) em(5);
+    font-size: 0.5rem;
+  }
+
+  &.grey {
+    $base-color: #dfdfdf;
+    color: invert($base-color);
+    background-color: $base-color;
+    border: 1px solid darken($base-color, 5);
+
+    &:hover {
+      background-color: darken($base-color, 10);
+      border: 1px solid darken($base-color, 12);
+    }
+
+    &:active {
+      background-color: darken($base-color, 20);
+      border: 1px solid darken($base-color, 22);
+    }
+
+    &:disabled {
+      background-color: desaturate($base-color, 50);
+      border: 1px solid desaturate($base-color, 40);
+      cursor: inherit;
+    }
+  }
+
+
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+h1 {
+  font: 400 1.6em/1.4 "Gotham SSm A", "Gotham SSm B";
+  color: #444
+}
+
+hr { border: none; border-top: 1px solid #e1e1e1; margin-bottom: 20px }
+
+:focus { outline: none; }

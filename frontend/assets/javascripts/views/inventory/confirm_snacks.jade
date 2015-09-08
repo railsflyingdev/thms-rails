@@ -1,0 +1,34 @@
+div.flex-center
+  #steps
+    .step(data-desc="Menu").done 1
+    .step(data-desc="Drinks").done 2
+    .step(data-desc="Snacks").active 3
+    .step(data-desc="Parking") 4
+    .step(data-desc="Details") 5
+    .step(data-desc="Final Review") 6
+
+div.toolbar
+  .actions.full
+    button.grey(ui-sref="authenticated.main.inventory.confirmOptions.drinks") Previous
+    button.dark-accent(ui-sref="authenticated.main.inventory.confirmOptions.parking") Next
+#snacksGrid
+  div(ng-repeat="section in Options.snacks.sections")
+    .title(ng-bind="section.name")
+    hr
+    div.flex-panel-grid.quad
+      div.category.panel(ng-repeat="snack in section.items")
+        .heading(ng-bind="snack.name")
+        .description(ng-bind="snack.description")
+        br
+        .price {{ snack.price_cents / 100 | currency }}
+        br
+        .field
+          input(type="number" min="0" placeholder="0" ng-model="snack.count")
+        .buttons
+          button.grey.small.wide(ng-click="decrement(snack)" ng-disabled="snack.count === 0") -
+          button.grey.small.wide(ng-click="increment(snack)") +
+hr
+div.toolbar
+  .actions.full
+    button.grey(ui-sref="authenticated.main.inventory.confirmOptions.drinks") Previous
+    button.dark-accent(ui-sref="authenticated.main.inventory.confirmOptions.parking") Next

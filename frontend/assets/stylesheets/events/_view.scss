@@ -1,0 +1,52 @@
+$event-date-item-bg-color: $body-background-color;
+#event-view {
+  @include outer-container();
+
+  @include media(min-width 1024px) {
+    div.panel:first-of-type {
+      @include span-columns(4.5)
+    }
+
+    div.panel:nth-of-type(2) {
+      @include span-columns(7);
+      @include shift(0.5);
+    }
+  }
+
+  @include media(max-width 1024px) {
+    div.panel:first-of-type {
+      @include fill-parent;
+    }
+
+    div.panel:nth-of-type(2) {
+      @include fill-parent;
+      margin-top: 2rem;
+    }
+  }
+
+
+  #event-dates-list {
+     font-family: "Whitney SSm A", "Whitney SSm B";
+    .event-date-item {
+      @include display(flex);
+      @include align-items(center);
+
+      margin-bottom: 1em;
+      & > .start, & > .finish {
+        @include flex(1 );
+//        text-align: right;
+        font-size: 1.1em;
+        font-weight: 500;
+      }
+
+      & > .actions {
+        @include flex(1);
+        text-align: right;
+      }
+
+      padding: 1em;
+      background-color: $event-date-item-bg-color;
+      border: 1px solid darken($event-date-item-bg-color, 5);
+    }
+  }
+}

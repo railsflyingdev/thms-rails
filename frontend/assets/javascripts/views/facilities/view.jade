@@ -1,0 +1,39 @@
+#event-view
+  .row
+    .panel
+      //.top-bar
+        button.small.grey(ng-click="eventEditing = true" ng-hide="eventEditing") Edit
+      .details
+        .top-bar
+          .title(ng-bind="facility.data.name")
+          .actions
+            button.small.grey(ng-click="editFacility()") Edit
+        .info-pair
+          .lead Capacity:
+          .data
+            div(ng-bind="facility.data.capacity")
+        .info-pair
+          .lead Type:
+          .data
+            div(ng-bind="facility.data.facility_type")
+
+    .panel
+      .top-bar
+        .title Facility Leases
+        button.small.grey.wide(ng-click="newLease()") New Lease
+      table
+        tbody
+          tr(ng-repeat="lease in leases")
+            td(ng-bind="lease.data.company.name")
+            td
+              span(ng-bind="lease.data.start | amDateFormat: 'D'")
+              sup(ng-bind="lease.data.start | amDateFormat: 'Do' | filterNumeric" )
+              span(ng-bind="lease.data.start | amDateFormat: ' MMMM YYYY'" )
+              .time(ng-bind="lease.data.start | amDateFormat: 'h:mm a'")
+            td
+              span(ng-bind="lease.data.finish | amDateFormat: 'D'")
+              sup(ng-bind="lease.data.finish | amDateFormat: 'Do' | filterNumeric")
+              span(ng-bind="lease.data.finish | amDateFormat: ' MMMM YYYY'")
+              .time(ng-bind="lease.data.finish | amDateFormat: 'h:mm a'")
+            td.actions
+              button.small.dark-accent.outline(ng-click="editLease(lease)") Edit

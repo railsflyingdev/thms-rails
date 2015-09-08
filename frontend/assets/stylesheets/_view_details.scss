@@ -1,0 +1,47 @@
+div.details {
+
+  & > div.top-bar {
+    @include display(flex);
+    div.title {
+      @include flex(5);
+      font-size: 1.7em;
+      text-transform: capitalize;
+    }
+
+    div.actions {
+      text-align: right ;
+      @include flex(1)
+    }
+
+  }
+
+  div.info-pair {
+    line-height: 2.3;
+    @include display(flex);
+    font-family: $alt-body-font-family;
+
+    & > .lead {
+      @include flex(1);
+      min-width: 10em;
+      font-size: 0.6em;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    & > .data {
+      @include flex(4);
+      font-weight: 400;
+      text-transform: capitalize;
+      line-height: 1.3;
+      font-size: 0.9em;
+      color: #444;
+
+      .info-pair {
+        .lead { font-weight: 400 }
+        .data { @include flex(6) }
+      }
+    }
+  }
+
+
+}

@@ -1,0 +1,16 @@
+table
+  thead
+    tr
+      th Name
+      th Manager
+      th Manager Email
+      th Manager Id
+    tbody
+      tr(ng-repeat="client in data")
+        td(ng-bind="client.data.name")
+        td(ng-bind="client.data.manager.full_name")
+        td(ng-bind="client.data.manager.email")
+        td(ng-bind="client.data.manager.id")
+
+input(type="text" placeholder="Suburb" ng-model="message" required)
+button.dark-accent.full(ng-click="notify()", class="pull-right") Send Notification

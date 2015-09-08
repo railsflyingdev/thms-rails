@@ -1,0 +1,7 @@
+.field
+  input(type="text" placeholder="Company Name" ng-model="company.data.name" required ng-minlength="2")
+.inline-numbers
+  .field
+    input(type="text" placeholder="Phone" ng-model="company.data.phone" required ng-minlength="8" ng-pattern="/^\\d+$/")
+  .field
+    input(type="text" placeholder="Fax" ng-model="company.data.fax")

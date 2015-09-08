@@ -1,0 +1,13 @@
+div.flex-center
+   div.panel.smallish
+      fieldset
+         legend New Menu Item
+         .field
+            input(type='text' placeholder='Item Name' ng-model='item.name' autofocus)
+         .field
+            textarea(placeholder='Item Description' ng-model='item.description')
+         .field
+            input(type='text' placeholder='Price' min='0' ng-model='item.price' money)
+         .field.right
+            //button.grey(ui-sref='authenticated.main.events.add.dates') Next Page
+            button.dark-accent(ng-click='createItem(item)') Create Item

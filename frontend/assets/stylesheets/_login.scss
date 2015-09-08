@@ -1,0 +1,26 @@
+#guest-header-outer {
+  background-color: $menu-bg-color;
+}
+
+#guest-header-outer, #guest-content-outer  {
+  @include display(flex);
+}
+
+#guest-content-outer {
+  & > main {
+    margin-top: em($header-height);
+    @include flex(1);
+    @include display(flex);
+    @include justify-content(center);
+
+    & > div.login {
+      max-width: 30%;
+      @include flex(1)
+    }
+
+    & > div.flex-center {
+      width: 100%
+    }
+  }
+
+}

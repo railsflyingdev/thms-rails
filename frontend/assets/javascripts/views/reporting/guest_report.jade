@@ -1,0 +1,17 @@
+.panel
+  .toolbar
+    .title Guest List for {{event.event_name}}
+  table
+    thead
+      tr
+        th Suite Name
+        th Host
+        th Company
+        th Suite Guests
+    tbody
+      tr(ng-repeat="confirmation in event.confirmed_inventory_options | orderBy:'facility_number'")
+        td(ng-bind="confirmation.facility_name")
+        td(ng-bind="confirmation.company.manager.full_name")
+        td(ng-bind="confirmation.company.friendly_name")
+        td
+          p(ng-repeat="guest in confirmation.guests" ng-bind="guest.name")

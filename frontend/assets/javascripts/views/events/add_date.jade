@@ -1,0 +1,8 @@
+.panel
+  form(name="form")
+    legend New Date
+    include forms/date
+
+  hr
+  .modal-footer
+    button.dark-accent.full(ng-disabled="form.$invalid" ng-click="save(event)") Create Date

@@ -1,0 +1,33 @@
+$error-color: lighten(salmon, 18);
+$error-text: darken(dimgrey, 10);
+
+$success-color: lighten(palegreen, 12);
+$success-text: darken(dimgrey, 10);
+
+$neutral-color: #ddd;
+$neutral-text: #6f6f6f;
+
+/** Meine Kleine Alert Boxen */
+.nice-alert {
+  @include transition(margin 0.3s ease-in);
+  padding: 8px 10px 10px 10px;
+  line-height: 1.125em;
+  margin-bottom: 5px;
+}
+
+.nice-alert.invalid, .nice-alert.valid {
+  box-shadow: 0 2px 4px rgba(0,0,0,0.09);
+  margin-bottom: 15px;
+}
+
+.nice-alert.invalid {
+  background-color: $error-color;
+  border: 1px solid darken($error-color, 5);
+  color: $neutral-text;
+}
+
+.nice-alert.valid {
+  background-color: $success-color;
+  border: 1px solid darken($success-color, 5);
+  color:  $success-text;
+}

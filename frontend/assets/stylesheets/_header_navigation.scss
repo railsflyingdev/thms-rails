@@ -1,0 +1,50 @@
+header {
+  & > div.user-details {
+    @include flex(0 0 17em);
+    margin-right: 2em;
+    nav > ul {
+      @include display(flex)
+    }
+
+    nav > ul > li {
+      @include display(flex);
+      @include flex(auto);
+      @include align-items(center);
+      margin-left: 1rem;
+      cursor: pointer;
+      &.border-right {
+        border-right: 1px solid #dfdfdf;
+      }
+      &:hover {
+        color: $main-accent;
+        & > div.arrow-down {
+          @include triangle(0.5em, $main-accent, down);
+        }
+      }
+
+
+      & > a { @include flex(1) }
+
+      & > i {
+        @include flex(0 0 1.4em);
+        font-size: 1.9rem;
+        display: none;
+        &.visible { display: inline-block }
+      }
+
+      &:not(:hover) > div.arrow-down {
+        @include triangle(0.5rem, black, down);
+      }
+
+      ul.dropdown-menu {
+        right: 0;
+        left: inherit;
+        margin: 0;
+        border: none;
+        min-width: 15rem;
+        border-radius: 0;
+      }
+    }
+  }
+
+}

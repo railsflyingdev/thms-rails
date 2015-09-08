@@ -1,0 +1,71 @@
+wdiv.toolbar
+  //button.dark-accent(ng-click="Ticket.addMagicalTickets()") Add Tickets
+.panel
+  .top-bar
+    .title Released Inventory
+
+  table
+    thead
+      tr
+        th Name
+        th Type
+        th Status
+        th Start Time
+        th Venue
+        th Facility Name
+        th.actions Actions
+    tbody
+      tr(ng-repeat="event in data | orderBy:'event_start'" ng-class="event.completed && 'green'")
+        td
+          span(ng-bind="event.event_name")
+          span.menu-exists(ng-click="openFile(event.inventory_options.menu_file)" ng-if="event.inventory_options.menu_file") M
+          span.agenda-exists(ng-click="openFile(event.inventory_options.agenda_file)" ng-if="event.inventory_options.agenda_file") A
+          span.tickets-exist(ui-sref="authenticated.main.tickets.index") T
+          //span.ticket-available T
+        td(ng-bind="event.event_type")
+        td(ng-bind="event.event_status")
+        td
+          span(ng-bind="event.event_start | amDateFormat: 'D'")
+          sup(ng-bind="event.event_start | amDateFormat: 'Do' | filterNumeric" )
+          span(ng-bind="event.event_start | amDateFormat: ' MMM YYYY'" )
+          .time(ng-bind="event.event_start | amDateFormat: 'h:mm a'")
+        td(ng-bind="event.venue_name")
+        td(ng-bind="event.facility_name")
+        td.actions.block
+          button.small(ng-if="event.is_confirmed").green-confirmed
+            i.icon-thin-254_check_ok_done_success
+            | Confirmed
+          button.small(ng-if="event.event_status == 'Closed'" tooltip="This event is marked as closed, Please contact the venue if you need any changes made to this event").red-confirmed Closed
+          div(ng-if="event.event_status != 'Closed'")
+            button.small.dark-accent(ng-if="event.is_confirmed" ng-click="reconfirmOption(event)" tooltip="Clicking this button will void your old confirmation. You will need to confirm your attendance again.") Replace Order
+            button.small.dark-accent(ui-sref="authenticated.main.inventory.confirmOptions({id: event.id})" ng-if="!event.is_confirmed && event.event_status !='Coming Soon'") Confirm Attendance
+          //button.small.dark-accent(ng-click="confirmAttendance(event)" ng-if="!event.is_confirmed") Confirm Options
+          button.small.dark-accent(ng-click="confirmGuests(event.id)" ng-if="event.is_confirmed") Guest List
+          //button.small.dark-accent(ng-click="releaseToTeam()") Release To Team
+          button.small.dark-accent(ui-sref="authenticated.main.inventory.release.identifyClass({id: event.id})") Release To Team
+br
+hr
+.panel
+  .top-bar
+    .title Upcoming Events
+  table
+    thead
+      tr
+        th Name
+        th Type
+        th Start Time
+        th Time Until Event
+        th Number Of Events
+        th Venue Name
+    tbody
+      tr(ng-repeat="event in upcomingEvents | orderBy:'first_event_date':false")
+        td(ng-bind="event.name")
+        td(ng-bind="event.event_type")
+        td
+          .time(ng-bind="event.first_event_date | amDateFormat: 'h:mm a'")
+          span(ng-bind="event.first_event_date | amDateFormat: 'dddd D'")
+          sup(ng-bind="event.first_event_date | amDateFormat: 'Do' | filterNumeric" )
+          span(ng-bind="event.first_event_date | amDateFormat: ' of MMMM YYYY'" )
+        td(am-time-ago="event.first_event_date")
+        td(ng-bind="event.event_dates_count")
+        td(ng-bind="event.venue_name")

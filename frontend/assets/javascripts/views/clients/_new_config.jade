@@ -1,0 +1,20 @@
+div.flex-center
+  #steps
+    .step(data-desc="Company Name").done 1
+    .step(data-desc="Company Address").done 2
+    .step(data-desc="Platform Config").active 3
+    .step(data-desc="Company Administrator") 4
+    //.step(data-desc="Facility Lease") 5
+.flex-center
+  .panel
+    .top-bar
+      .title Platform Configuration
+    form
+      include ../companies/forms/config
+      legend Notifcations
+      include ../companies/forms/notifications
+      //include ../companies/forms/modules
+      br
+      .right
+        button.grey(ui-sref="authenticated.main.clients.add.address") Previous
+        button.dark-accent(ui-sref="authenticated.main.clients.add.admin") Next

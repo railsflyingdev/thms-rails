@@ -1,0 +1,15 @@
+div.panel
+  .top-bar
+    .title Event Date
+    h1(ng-bind="date.start")
+  .field
+    label Start Date
+      input(type="datetime-local" ng-model="date.start_time")
+  .field
+    label Finish Date
+      input(type="datetime-local" ng-model="date.end_time")
+  .field
+    label Agenda
+      textarea(placeholder="e.g: Dinner at 6pm, Dessert served in foyer at 9pm" ng-model="date.agenda")
+  .field.right
+    button.dark-accent(ng-click="save()") Save Event Date

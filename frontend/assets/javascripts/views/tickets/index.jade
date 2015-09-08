@@ -1,0 +1,29 @@
+accordion
+  accordion-group.panel(ng-repeat="event in data | orderBy:'data.first_event_date':false")
+    accordion-heading
+      .flex-toolbar
+        .title(ng-bind="event.data.event_name")
+        .actions
+          button.grey View Tickets
+          button.dark-accent(ng-click="downloadAllTickets(event)" ng-if="event") Download All Tickets
+    table
+      thead
+        tr
+          th.small Event Date
+          th Suite
+          th Seat
+          th.actions Actions
+
+      tbody
+        tr(ng-repeat="ticket in event.data.tickets | orderBy:'seat'")
+          td.small
+            span(ng-bind="ticket.event_start | amDateFormat: 'D'")
+            sup(ng-bind="ticket.event_start | amDateFormat: 'Do' | filterNumeric" )
+            span(ng-bind="ticket.event_start | amDateFormat: ' MMMM YYYY'" )
+            .time(ng-bind="ticket.event_start | amDateFormat: 'h:mm a'")
+          td(ng-bind="ticket.facility_name")
+          td(ng-bind="ticket.seat")
+          td.actions
+            button.small.dark-accent(ng-click="viewTicket(ticket)") View
+            //button.small.dark-accent Print
+            //button.small.dark-accent Forward

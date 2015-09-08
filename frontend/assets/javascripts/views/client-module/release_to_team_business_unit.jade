@@ -1,0 +1,34 @@
+div.flex-center
+  #steps
+    .step(data-desc="Identify Class").done 1
+    .step(data-desc="Allocate To Business Units").active 2
+    .step(data-desc="Release Expiry") 3
+    .step(data-desc="Automate Invitation") 4
+    //.step(data-desc="Facility Lease") 5
+.flex-center
+  .panel
+    .top-bar
+      .title Allocate To Business Units
+    hr
+    .alert-info You can share tickets across your teams for fair allocations. Or choose ALL to simply allow “first in” access.
+    form(novalidate name="form")
+      .field.large
+        label Marketing
+          input(type="number" required min="0" placeholder="0")
+      .field.large
+        label Sales
+          input(type="number" required min="0" placeholder="0")
+      .field.large
+        label Operations
+          input(type="number" required min="0" placeholder="0")
+      .field.large
+        label Administration
+          input(type="number" required min="0" placeholder="0")
+      .field.large
+        label All
+          input(type="number" required min="0" placeholder="0")
+    br
+    .toolbar
+      .actions.full
+        button.grey(ui-sref="authenticated.main.inventory.release.identifyClass") Previous
+        button.dark-accent(ui-sref="authenticated.main.inventory.release.releaseExpiry" ng-disabled="form.$invalid") Next

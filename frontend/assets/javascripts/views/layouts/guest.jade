@@ -1,0 +1,22 @@
+//#guest-header-outer
+//   header
+script(type="text/javascript" src="/js/browser-detect.js")
+div.centered.ie-visible
+  div.ie-panel
+    .top-bar
+      .title Howdy
+
+    p We have noticed you are using an old version of Internet Explorer.
+      br
+      |For security reasons we only support modern browsers.
+      br
+      |We recommend that you use Google Chrome, which can be downloaded here
+      br
+      a(href="http://google.com/chrome") Google Chrome
+    br
+    p If this is an issue for you or your organization, please contact Scott at 0414 652 480 or
+      br
+      a(href="mailto:cs@turnkeyhospitality.com.au") cs@turnkeyhospitality.com.au
+
+#guest-content-outer
+   main(ui-view="content")

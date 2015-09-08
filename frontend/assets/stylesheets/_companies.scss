@@ -1,0 +1,514 @@
+.flex-left, .flex-right {
+  @include flex(1 auto);
+  div.panel { margin-bottom: 1rem }
+}
+
+.flex-center {
+  @include display(flex);
+  @include justify-content(center);
+}
+
+div.right {
+  text-align: right;
+
+  & > button + button {
+    margin-left: 1em;
+  }
+}
+
+div.flex-center {
+  div.panel {
+    @include transition(all 1s);
+    max-width: 50%;
+    &.small {
+      max-width: 30%;
+    }
+
+    &.smaller {
+      max-width: 25%;
+    }
+
+    &.smallish { max-width: 35% }
+
+    &.medium {
+      max-width: 40%;
+    }
+
+    &.large {
+      max-width: 70%;
+    }
+
+    &.larger {
+      max-width: 80%;
+    }
+
+
+  }
+
+}
+
+div.flex-left {
+  div.panel {
+//    max-width: 90%;
+  }
+}
+
+div.flex-right {
+  div.panel {
+    margin-left: 10%;
+  }
+}
+
+div.form.add {
+//  @include display(flex);
+//  @include align-items(flex-start);
+  form {
+    @include display(flex);
+    @include align-items(flex-start);
+  }
+}
+
+
+form.add-search-company {
+  div.flex-center > div.panel {
+    margin-top: 5rem;
+  }
+}
+
+
+div#steps {
+  margin-top: 3rem;
+  margin-bottom: 6rem;
+}
+
+
+div.triangle {
+  @include triangle(1em, black, down)
+}
+
+div.panel > div.top-bar {
+  @include display(flex);
+  @include align-items(center);
+  margin-bottom: 1.5rem;
+
+  div.title {
+    margin-bottom: 0;
+    @include flex(1);
+    font-family: 'Gotham SSm A', 'Gotham SSm B';
+    font-weight: 500;
+    font-style: normal;
+    &.big {
+      font-size: 1.4rem;
+    }
+  }
+
+  button {
+    &.wide {
+      @include flex(0 0 6rem)
+    }
+    &.wider {
+      @include flex(0 0 8rem)
+    }
+    @include flex(0 0 4rem)
+  }
+}
+
+div.flex-container {
+  @include display(flex);
+  margin-top: 1rem;
+}
+
+div.flex-panel-grid {
+  @include display(flex);
+  @include flex-wrap(wrap);
+  margin-top: 1rem;
+
+  &.quad {
+    div.panel {
+      font-size: 0.8em;
+      @include flex(1);
+
+      @include media(min-width 768px) {
+
+      }
+
+      @include media(min-width 1024px) {
+
+      }
+
+      @include media(min-width 1280px) {
+
+        min-width: 15%;
+        max-width: 15%;
+        margin-left: percentage(10/600);
+      }
+
+      min-width: 100%;
+      max-width: 100%;
+      &.paper-stack {
+
+      }
+      padding: 2rem;
+      margin-bottom: 2rem
+    }
+  }
+
+
+}
+
+
+tr.editable {
+  td { vertical-align: baseline }
+
+  input[disabled] {
+    border: 1px solid transparent;
+  }
+}
+.field select[disabled] {
+  background-image: none !important;
+}
+
+textarea { resize: vertical; }
+.field.editable {
+  input[disabled], textarea[disabled], select[disabled] {
+    background-color: darken($white, 5);
+  }
+}
+//.field input[disabled] {
+//  cursor: not-allowed;
+//}
+
+#main > div.flex-center > div.panel {
+  margin-top: 5rem;
+}
+
+.employee-profile {
+  @include display(flex);
+  @include align-items(center);
+
+  div:first-of-type, i, button {
+    @include flex(1)
+  }
+
+  i {
+    max-width: 4rem;
+    font-size: 3rem;
+  }
+
+  div.name { font-size: 2rem; line-height: 2rem; }
+
+  button {
+    max-width: 8rem;
+  }
+}
+
+div.panel.transparent {
+  background-color: inherit;
+  border: none;
+  @include display(flex);
+  @include align-items(center);
+//  padding: 0 !important;
+}
+
+div.panel.dashed {
+  @include display(flex);
+  @include justify-content(center);
+  @include align-items(center);
+  border: 3px dashed #eee;
+  cursor: pointer;
+  color: #999;
+  text-align: center;
+
+  font-family: "Gotham SSm A", "Gotham SSm B";
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+
+div.menu-item {
+  @include display(flex);
+//  background-color: red;
+  margin: 1rem 0;
+  padding: 1rem 1rem;
+  border: 1px solid darken($body-background-color,10);
+  background-color: $body-background-color;
+  & > div.inner-left, & > div.inner-right {
+    @include flex(1);
+  }
+
+  .item-description {
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: #444;
+  }
+}
+
+
+#menu-items-container { max-width: 40% }
+
+
+#menu-items-list {
+  max-height: 100vh;
+  overflow: scroll;
+}
+
+#menu-builder {
+
+}
+
+#menu-builder-sections-list {
+  & > div.menu-section {
+    padding: 0 0.5rem;
+    margin-bottom: 2rem;
+
+    & > ol {
+      min-height: 5rem;
+    }
+  }
+}
+
+.dashed { border: 3px dashed #eee }
+
+
+#event-view {
+  div.flex-left {
+    max-width: 30%;
+  }
+}
+
+
+div.menu-selection {
+  & > div.panel {
+
+    font-size: 0.9rem;
+
+
+    div.bottom-bar, div.top-bar {
+      & > div.title {
+        font-size: 2em;
+        text-align: center;
+      }
+    }
+    div.bottom-bar { margin-top: 2em}
+
+    div.top-bar > div.title {
+
+    }
+    cursor: pointer;
+    @include transition(box-shadow 0.05s ease-in-out);
+    &:hover {
+      box-shadow: 0 0 10px lighten($main-accent, 10);
+    }
+  }
+
+  & > div.panel:nth-of-type(2n) {
+    margin-left: 2em;
+  }
+
+
+  div.menu-item {
+    line-height: 1.3;
+
+    font-weight: 300;
+    color: #222;
+    background-color: inherit;
+    border: inherit;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 0.7em;
+    &.highlighted {
+      color: darken($main-accent, 20);
+      font-size: 0.9em;
+    }
+  }
+
+  div.section-title {
+    font-weight: 500;
+    line-height: 2em;
+    font-size: 1.3em;
+    margin-top: 1em;
+    font-family: "Gotham SSm A", "Gotham SSm B";
+    color: #333;
+  }
+}
+
+// Layout for client snack option confirmation
+#snacksGrid, #drinksGrid {
+
+  .flex {
+    @include display(flex);
+    &.horiz-center {
+      @include align-items(center)
+    }
+  }
+
+
+  .flex {
+    div { @include flex(1) }
+    .heading { min-width: 75% }
+
+  }
+
+  .heading {
+    font-family: "Whitney SSm A", "Whitney SSm B";
+    font-weight: 300;
+    color: #444;
+    font-size: 1.3em;
+  }
+
+  .description {
+    font-size: 0.8em;
+    color: #555;
+    line-height: 1.3;
+    margin-top: 1em;
+  }
+
+  .buttons { text-align: center }
+}
+
+
+
+
+tr td span.menu-exists {
+  padding: 0.2em 0.4em;
+  margin-left: 1em;
+  font-weight: bold;
+  font-family: sans-serif;
+  color: green;
+  background-color: lighten(lawngreen, 30);
+  border: 1px solid darkgreen;
+  border-radius: 5px;
+}
+
+tr td span.tickets-exist {
+  padding: 0.2em 0.5em;
+  margin-left: 1em;
+  font-weight: bold;
+  font-family: sans-serif;
+  color: #fff;
+  background-color: lighten(darkred, 20);
+  border: 1px solid darkred;
+  border-radius: 5px;
+}
+
+tr td span.agenda-exists {
+  padding: 0.2em 0.4em;
+  margin-left: 1em;
+  font-weight: bold;
+  font-family: sans-serif;
+  color: blue;
+  background-color: lighten(dodgerblue, 30);
+  border: 1px solid darkblue;
+  border-radius: 5px;
+}
+
+
+tr.green {
+  background-color: lighten(greenyellow, 30);
+  td.actions > i {
+    font-size: 1.4rem;
+    color: darkgreen;
+  }
+}
+
+tr.red {
+  background-color: lighten(red, 40);
+  td.actions > i {
+    font-size: 1.4rem;
+    color: darkgreen;
+  }
+}
+
+div.panel#parking {
+  div.field {
+    text-align: center;
+    & > input {
+      font-size: 3rem;
+      width: 5rem;
+      text-align: center;
+      line-height: 1;
+    }
+  }
+}
+
+strong {
+  font-weight: 500;
+  font-family: "Gotham SSm A", "Gotham SSm B";
+  line-height: 1.2;
+}
+
+
+div.pairing {
+  @include display(flex);
+
+  div.title {
+    @include flex(0 0 10rem);
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.2;
+    color: #333;
+  }
+
+  div.desc {
+    @include flex(1);
+    font-weight: 300;
+    line-height: 1.2;
+    color: #222
+  }
+}
+
+button.green-confirmed {
+  background-color: green !important;
+  border: 1px solid darken(green, 5) !important;
+  color: white !important;
+  cursor: inherit;
+  font-weight: bold;
+  i { margin-right: 0.5rem; font-size: 0.8rem }
+}
+
+button.red-confirmed {
+  background-color: red !important;
+  border: 1px solid darken(red, 5) !important;
+  color: white !important;
+  font-weight: bold;
+  cursor: inherit;
+  i { margin-right: 0.5rem; font-size: 0.8rem }
+}
+
+#reviewInventoryOptions {
+  div.flex-center[ng-if] { margin-bottom: 4rem }
+  margin-bottom: 5rem;
+}
+
+div.row {
+  @include row();
+  &.flex {
+    @include display(flex);
+    @include flex-direction(column);
+  }
+}
+
+.panel > iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+}
+
+span[ng-click] {
+  cursor: pointer;
+}
+
+.alert-info {
+  padding: 0.8em 1.3em;
+  margin-bottom: 1.4em;
+  font-size: 0.8em;
+  font-weight: 500;
+  color: rgb(91, 128, 210);
+  border: 1px solid rgb(91,128,210);
+  border-radius: 7px;
+  line-height: 1.2;
+}
+
+.panel > iframe {
+  height: 1000px
+}

@@ -1,0 +1,250 @@
+$input-height: 40px;
+$text-color: #666;
+
+legend, div.title {
+  font-family: 'Gotham SSm A', 'Gotham SSm B';
+  font-weight: 500;
+  font-style: normal;
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 1.1rem
+}
+
+input[type=submit] {
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+}
+
+.field {
+  margin-bottom: rem(10);
+
+//  label > #{$all-text-inputs}, textarea, select { margin-top: 0.5rem }
+
+  #{$all-text-inputs}, textarea, select {
+
+    background-color: #fefefe;
+    width: 100%;
+    font-size: 1rem;
+    border: 1px solid #dedede;
+    padding: 10px 10px;
+    border-radius: $radius-amount;
+    color: #4f4f4f;
+  }
+
+  label {
+    margin-bottom: 1.3rem;
+    color: #444;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  select {
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    @include user-select(none);
+    text-overflow: '';
+    text-indent: 0.1px;
+    padding: 11px 10px;
+    background-repeat: no-repeat;
+    background-position: 97% center;
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI2cHgiIGhlaWdodD0iM3B4IiB2aWV3Qm94PSIwIDAgNiAzIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA2IDMiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwb2x5Z29uIHBvaW50cz0iNS45OTIsMCAyLjk5MiwzIC0wLjAwOCwwICIvPjwvc3ZnPg==");
+    font-family: $form-font-family;
+  }
+
+
+  #{$all-text-inputs}, textarea {
+    font-family: $form-font-family;
+    @include transition(all 300ms ease);
+    line-height: 20px;
+
+    &:hover, &:focus {
+      background-color: white
+    }
+
+//    &:focus {
+//      border: 1px solid #f5f5f5;
+//      box-shadow: inset 0 0 0 0 $form-outline-color, inset 0 0 0 1px rgba($form-outline-color, 0.45), 0 0 7px 0 rgba($form-outline-color, 0.4);
+//    }
+//
+//    &.ng-invalid.showErrors, &.invalid {
+//      box-shadow: inset 0 0 0 0 #ccc, inset 0 0 0 1px rgba(227, 82, 56, 0.9), inset 0 1px 2px 1px $main-accent, 0 0 7px 0 rgba(227, 82, 56, 0.4);
+//    }
+//
+//    &.ng-dirty.ng-invalid {
+//      box-shadow: inset 0 0 0 0 #ccc, inset 0 0 0 1px rgba(227, 82, 56, 0.9), inset 0 1px 2px 1px $main-accent, 0 0 7px 0 rgba(227, 82, 56, 0.4);
+//    }
+
+  }
+
+  label {
+    display: block;
+    font-family: $form-font-family;
+    #{$all-text-inputs}, textarea, select { margin-top: 8px }
+    &.showErrors { color: rgb(246, 64, 80) }
+  }
+
+  &.right {
+    text-align: right
+  }
+}
+
+#{$all-text-inputs}, textarea {
+  &:disabled {
+    background-color: #eee;
+    &:hover {
+      background-color: #eee;
+    }
+  }
+}
+
+
+$valid-form-color: lighten(#28921f, 50);
+$invalid-form-color: lighten(#b03535, 10);
+
+#{$all-text-inputs}, textarea {
+  &[ng-required], &:required {
+    background: #fff url('/images/red_asterisk.png') no-repeat;
+    background-position: 98% center;
+  }
+
+  &[ng-required].ng-valid, &:required:valid, &:required.ng-valid {
+    background: #fff url('/images/valid.png') no-repeat;
+    box-shadow: 0 0 5px lighten($valid-form-color, 10);
+    background-size: 14px 14px;
+    border-color: $valid-form-color;
+    background-position: 96% center;
+  }
+
+  &[ng-required].ng-invalid.ng-dirty, &:required:invalid.ng-dirty, &:required.ng-dirty.ng-invalid {
+    background: #fff url('/images/invalid.png') no-repeat !important;
+    background-position: 96% center !important;
+    background-size: 14px 14px !important;
+    box-shadow: 0 0 5px lighten($invalid-form-color, 20) !important;
+    border-color: $invalid-form-color !important;
+  }
+}
+form input:required[type=number] {
+  background-position: 90% center !important;
+}
+
+input {
+  &.ng-valid {
+
+  }
+  &.ng-invalid {
+
+  }
+  &.ng-pristine {
+
+  }
+  &.ng-dirty {
+
+  }
+
+  /* really specific css rules applied by angular */
+  &.ng-invalid-required {
+
+  }
+  &.ng-invalid-minlength {
+
+  }
+  &.ng-valid-max-length {
+
+  }
+}
+
+input {
+  &:disabled {
+    background-color: #eee;
+    color: #777;
+  }
+}
+
+
+input[type=datetime-local] {
+  &[required] { padding-right: 3rem }
+}
+
+.field {
+
+  label > input[type=file] { display: block; margin-top: 0.8em }
+}
+
+@mixin pfixed-input {
+  input {
+    display: inline-block;
+    margin-top: 0px;
+    height: $input-height;
+    margin: 0;
+    vertical-align: top;
+    border: 1px solid #ccc;
+    //@include box-shadow(inset 0 1px 2px rgba(0,0,0,0.1));
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+@mixin pfix-common {
+  vertical-align: top;
+  display: inline-block;
+  height: $input-height;
+  padding: 8px 10px;
+  background: #f2f2f2;
+  border: 1px solid #cccdcf;
+  text-align: center;
+  color: $text-color;
+  font-size: 0.8rem;
+}
+
+@mixin prefix-for-span {
+  border-right: none;
+  @include pfix-common;
+}
+
+@mixin postfix-for-span {
+  border-left: none;
+  @include pfix-common;
+}
+
+.field {
+  span.prefix, span.postfix {
+    float: left;
+  }
+
+  span.prefix {
+    @include prefix-for-span;
+    line-height: 23px;
+    @include omega();
+  }
+
+  span.postfix {
+    @include postfix-for-span;
+  }
+}
+
+.pfix {
+  @include pfixed-input;
+  margin-top: 8px;
+}
+
+
+.field.pfix {
+  @include clearfix;
+
+  label { margin-bottom: 0.5em; font-weight: 500 }
+  & > #{$all-text-inputs} {
+    float: left;
+    max-width: 4rem;
+    border-right: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    text-align: center;
+  }
+
+}
+
+textarea {
+  min-height: 200px;
+}
+

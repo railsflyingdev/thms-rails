@@ -1,0 +1,7 @@
+.panel
+  form(name="form")
+    legend New Event
+    include forms/event
+  hr
+  .modal-footer
+    button.dark-accent.full(ng-disabled="form.$invalid" ng-click="save(event)") Create Event

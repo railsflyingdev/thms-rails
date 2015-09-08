@@ -1,0 +1,18 @@
+.panel
+  .flex-toolbar
+    .title Users
+    .field.search
+      input(type="search" placeholder="Search" ng-model="filterModel" autofocus)
+
+
+  hr
+  .employees-table
+    .record(ng-repeat="user in users| filter:filterModel:strict track by user.id").repeat-animation
+      .details
+        .name(ng-bind="user.full_name")
+        .company(ng-bind="user.company_name")
+        .email(ng-bind="user.email")
+      .actions
+        button.small.dark-accent.outline(ng-click="masqueradeAs(user)")
+          i.icon-thin-218_thinking_brain_head_mind
+          span Masquerade

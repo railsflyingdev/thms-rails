@@ -1,0 +1,68 @@
+.tabbed-panel {
+  background-color: $white;
+  border: 1px solid darken($white, 15);
+  padding: 1rem 2rem;
+  @include clearfix;
+}
+
+.tabbable {
+  @include clearfix
+}
+
+.nav-tabs {
+  > li {
+    float: left;
+    cursor: pointer;
+
+    border-bottom: 3px solid transparent;
+
+    &.active {
+      border-bottom: 3px solid $main-accent;
+    }
+
+    // Tab Titles
+    > a {
+      @include transition(color 0.3s);
+      padding: 1em;
+      display: block;
+      font-family: $alt-body-font-family;
+      font-weight: 600;
+      font-size: 0.8em;
+      text-transform: uppercase;
+      color: #aaa;
+    }
+    // Active tab titles
+    &.active > a {
+      color: #222;
+    }
+  }
+}
+
+.tab-content, .nav-tabs {
+  float: left;
+  width: 100%;
+  display: block;
+}
+
+.tab-content {
+
+  > .tab-pane {
+    display: none;
+    margin-top: 2rem;
+  }
+
+  > .active {
+//    @include display(flex);
+    display: block;
+  }
+  
+}
+
+.flex-row {
+  @include display(flex);
+
+  form {
+    @include flex(1);
+  }
+
+}

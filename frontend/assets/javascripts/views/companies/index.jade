@@ -1,0 +1,20 @@
+div.toolbar
+  .filters
+    .field.search
+      input(type="text" placeholder="Name or Email" ng-model="filterValue" ng-change="updateFilter()" autofocus)
+  .actions
+    button.dark-accent(ui-sref="authenticated.main.company.add.search") Add Company
+table
+  thead
+    tr
+      th Name
+      th Manager Email
+      th Ticket Type
+      th.actions Actions
+    tbody
+      tr(ng-repeat="client in data | filter:filterModel")
+        td(ng-bind="client.data.name")
+        td(ng-bind="client.data.manager.email")
+          td(ng-bind="client.data.ticket_type")
+        td.actions
+          button.small.dark-accent.outline(ng-click='viewCompany(client.data.id)') View

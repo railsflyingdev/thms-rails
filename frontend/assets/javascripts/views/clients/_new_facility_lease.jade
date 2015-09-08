@@ -1,0 +1,17 @@
+div.flex-center
+  #steps
+    .step(data-desc="Company Name").done 1
+    .step(data-desc="Company Address").done 2
+    .step(data-desc="Company Config").done 3
+    .step(data-desc="Company Administrator").done 4
+    .step(data-desc="Facility Lease").active 5
+.flex-center
+  .panel
+    .top-bar
+      .title Facility Lease
+    form(novalidate name="form")
+
+    br
+    .toolbar
+      .actions.full
+        button.dark-accent(ng-click='createLease(lease)') Create Lease

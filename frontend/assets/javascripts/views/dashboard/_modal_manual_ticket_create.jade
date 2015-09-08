@@ -1,0 +1,28 @@
+.tabbed-panel
+  form(name="editForm" novalidate)
+    tabset
+      tab(heading="Request From Ticketek")
+      tab(heading="Manually Create")
+        form(name="form")
+          .field
+            label Event Name
+              input(type="text" disabled ng-model="inventory.event_name")
+          .field
+            label Client Name
+              input(type="text" disabled ng-model="inventory.client_name")
+          .field
+            label Event Date
+              input(type="datetime" disabled to-unix ng-model="inventory.event_start")
+          .field
+            label Ticket Prefix
+              input(type="text" placeholder="e.g: 20140702-8313-" ng-model="ticketPrefix" required)
+          .field.right
+            button(ng-click="createManual(ticketPrefix)" ng-disabled="form.$invalid || inProgress" ).dark-accent Create
+          //include forms/control
+//.panel
+//  form(name="form")
+//    legend Edit Event
+//
+//  hr
+//  .modal-footer
+//    button.dark-accent.full(ng-disabled="form.$invalid" ng-click="save(event)") Save Changes

@@ -1,0 +1,17 @@
+div.panel
+   fieldset
+      legend New Event
+      .field
+         input(type='text' placeholder='Event Name' ng-model='event.name' autofocus)
+      .field
+         textarea(placeholder='Event Description' ng-model='event.description')
+      .field
+         select(ng-model='event.type')
+            option(ng-value="circus") Circus
+            option(ng-value="live_event") Live Event
+            option Foo Bar
+
+
+      .field.right
+         //button.grey(ui-sref='authenticated.main.events.add.dates') Next Page
+         button.dark-accent(ng-click='createEvent(event)') Create Event

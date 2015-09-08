@@ -1,0 +1,93 @@
+div.flex-center(ng-if="Options.selectedOptions.selection.menu")
+  div.panel
+    .top-bar
+      .title Selected Menu
+    h1(ng-bind="Options.selectedOptions.selection.menu.name")
+
+div.flex-center
+  div.panel
+    .top-bar
+      .title Additional Beverages
+    table
+      thead
+        tr
+          th Name
+          //th.actions Quantity
+      tbody
+        tr(ng-repeat="item in Options.selectedOptions.selection.drinks")
+          td(ng-bind="item.name")
+    br
+    .top-bar
+      .title Wine, Beer and Pairings
+    table
+      thead
+        tr
+          th Name
+      tbody
+        // WWE
+        tr(ng-show="Options.selectedOptions.selection.foodBeveragePairing && Options.selectedOptions.selection.menu.name == 'Menu One' && !Options.iceHockey")
+          td Devil’s Lair The Hidden Cave Chardonnay
+        tr(ng-show="Options.selectedOptions.selection.foodBeveragePairing && Options.selectedOptions.selection.menu.name == 'Menu One' && !Options.iceHockey")
+          td Matilda Bay Redback Original
+        tr(ng-show="Options.selectedOptions.selection.foodBeveragePairing && Options.selectedOptions.selection.menu.name == 'Menu One' && !Options.iceHockey")
+          td Matilda Bay Fat Yak Pale Ale
+
+        tr(ng-show="Options.selectedOptions.selection.foodBeveragePairing && Options.selectedOptions.selection.menu.name == 'Menu Two' && !Options.iceHockey")
+          td Matilda Bay Beez Neez
+        tr(ng-show="Options.selectedOptions.selection.foodBeveragePairing && Options.selectedOptions.selection.menu.name == 'Menu Two' && !Options.iceHockey")
+          td Matilda Bay Fat Yak Pale Ale
+        tr(ng-show="Options.selectedOptions.selection.foodBeveragePairing && Options.selectedOptions.selection.menu.name == 'Menu Two' && !Options.iceHockey")
+          td Rosemount Estate District Release Chardonnay
+        // WWE
+
+        // Ice Hockey
+        tr(ng-show="Options.selectedOptions.selection.foodBeveragePairing && Options.iceHockey")
+          td Matilda Bay Fat Yak Pale Ale
+        tr(ng-show="Options.selectedOptions.selection.foodBeveragePairing && Options.iceHockey")
+          td Saltram 1859 Shiraz
+        tr(ng-show="Options.selectedOptions.selection.foodBeveragePairing && Options.iceHockey")
+          td Rosemount Estate District Release Chardonnay
+        tr(ng-show="Options.selectedOptions.selection.dessertWinePairing")
+          td Baileys of Glenrowan Fortified Founder Series Muscat
+        tr(ng-show="Options.selectedOptions.selection.dessertWinePairing")
+          td Baileys of Glenrowan Fortified Founder Series Topaque
+        tr(ng-show="Options.selectedOptions.selection.standardDrinkList")
+          td Your Standard Drinks List
+        tr(ng-if="Options.shouldShowCoke()")
+          td A variety of Coca-Cola soft drinks
+        // Ice Hockey
+br
+
+div.flex-center(ng-if="Options.selectedOptions.selection.snacks")
+  div.panel
+    .top-bar
+      .title Selected Snacks
+    table
+      thead
+        tr
+          th Name
+          th.actions Quantity
+      tbody
+        tr(ng-repeat="item in Options.selectedOptions.selection.snacks")
+          td(ng-bind="item.name")
+          td.actions(ng-bind="item.count")
+br
+div.flex-center(ng-if="Options.selectedOptions.selection.parkingSpaces")
+  div.panel
+    .top-bar
+      .title Parking
+    h1 {{Options.selectedOptions.selection.parkingSpaces}}
+br
+div.flex-center
+  div.panel
+    .top-bar
+      .title Details
+    .field
+      label Instructions
+        textarea(ng-model="Options.selectedOptions.selection.notes" disabled)
+    .field
+      label Host Details
+        textarea(ng-model="Options.selectedOptions.selection.host_details" disabled)
+    .field
+      label Host can order additional items
+        input(type="checkbox" ng-model="Options.selectedOptions.selection.hostCanOrderAdditionalItems" disabled)

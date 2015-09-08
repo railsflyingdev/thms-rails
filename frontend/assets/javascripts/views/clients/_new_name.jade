@@ -1,0 +1,17 @@
+div.flex-center
+   #steps
+      .step(data-desc="Company Name").active 1
+      .step(data-desc="Company Address") 2
+      .step(data-desc="Platform Config") 3
+      .step(data-desc="Company Administrator") 4
+      //.step(data-desc="Facility Lease") 5
+.flex-center
+   .panel
+      .top-bar
+         .title New Company
+      form(novalidate name="form")
+         include ../companies/forms/details
+      br
+      .toolbar
+        .actions.full
+          button.dark-accent(ui-sref="authenticated.main.clients.add.address" ng-disabled="form.$invalid") Next

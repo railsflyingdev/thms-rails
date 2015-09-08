@@ -1,0 +1,15 @@
+div.toolbar
+   button.dark-accent(ui-sref="authenticated.main.catering.menu.categories.new") New Category
+
+div(ng-repeat="category in categories")
+   .title(ng-bind="category.name")
+   hr
+   div.flex-panel-grid.quad
+      div.category.panel.paper-stack(ng-repeat="child in category.children" ui-sref="authenticated.main.catering.menu.category.view({id:child.id})" ng-class="child.items.length > 0 && 'paper-stack'")
+         .top-bar
+            .title
+               a(ng-bind="child.name")
+            .count {{child.items.length}}
+         //button.dark-accent.outline(ng-show='child.items.length > 0') View Items
+         //button.dark-accent.outline New Item
+      div.category.panel.dashed New Sub-Category

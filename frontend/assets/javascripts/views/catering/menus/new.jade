@@ -1,0 +1,41 @@
+//div.panel
+//   button.small.grey(ui-draggable='true') Foo
+//
+//div.panel(ui-on-drop='console.log("foo")')
+//   .top-bar
+//      .title Drag Me Here
+.flex-container
+   #menu-items-container.flex-left
+      div.panel.smaller
+         .top-bar
+            .title Menu Items
+            input(type="text" placeholder="Search..." ng-model='itemFilter')
+         #menu-items-list
+            div(ng-repeat="category in categories")
+               //.menu-category.title(ng-bind="category.name")
+               //hr
+               div(ng-repeat="child in category.children")
+                  .menu-item(ng-repeat="item in child.menu_items | filter:itemFilter" ui-draggable='true' drag='item')
+                     .inner-left
+                        .item-name(ng-bind="item.name")
+                        .item-description(ng-bind="item.description")
+                     .inner-right
+                        .item-category(ng-bind="child.name")
+
+
+   #menu-builder.flex-right
+      div.panel
+         .top-bar
+            .title Menu Build
+            button.small.dark-accent.wider(ng-click="saveMenu()") Create Menu
+         #menu-builder-sections-list
+            div.menu-section.dashed(ui-draggable='true' ng-repeat="section in menu.sections" ui-on-drop='addItemToSection(section, $event, $data)')
+               .field
+                  input(type="text" autofocus placeholder="Section Name" ng-model="section.name")
+               ol
+                  li(ng-repeat="item in section.items")
+                     a(ng-bind="item.name")
+                     input(type="checkbox" ng-model="item.data.drink")
+
+
+            button.grey(ng-click="addMenuSection()") Add Menu Section

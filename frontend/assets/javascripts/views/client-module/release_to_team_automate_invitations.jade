@@ -1,0 +1,26 @@
+div.flex-center
+  #steps
+    .step(data-desc="Identify Class").done 1
+    .step(data-desc="Allocate To Business Units").done 2
+    .step(data-desc="Release Expiry").done 3
+    .step(data-desc="Automate Invitation").active 4
+    //.step(data-desc="Facility Lease") 5
+.flex-center
+  .panel
+    .top-bar
+      .title Automate Invitations
+    hr
+    .alert-info Once a ticket is requested, and a guest email or mobile is captured, the system can automatically issue an invitation using your company’s logo or template. Once a connection is made with the guest we can then automate RSVP.
+      | Finally, guest information like a survey after the event or details around the guest’s favourite event or team can be requested and used for future development of this relationship.
+    form(novalidate name="form")
+      .field
+        select(ng-model='event_class')
+          option(ng-value="circus") Yes
+          option(value="" selected="") No
+
+
+    br
+    .toolbar
+      .actions.full
+        button.grey(ui-sref="authenticated.main.inventory.release.releaseExpiry") Previous
+        button.dark-accent(ng-disabled="form.$invalid") Release

@@ -1,0 +1,47 @@
+div.toolbar
+  .filters
+    .field.search
+      input(type="text" placeholder="Search" ng-model="filterModel.data.name" autofocus)
+      label
+        input(type="checkbox" ng-change="toggleShowUpcomingOnly()" ng-model="upcomingOnly")
+        | Show only upcoming events
+      select(ng-model="event_type" ng-options="t.value as t.caption for t in event_types")
+    //.field.select.small
+      select(ng-model="filterModel.data.status")
+        option(value="") Filter By Status
+        option(value="coming soon") Coming Soon
+        option(value="open") Open
+        option(value="closing soon") Closing Soon
+        option(value="closed") Closed
+  .actions
+    button.dark-accent(ng-click="newEvent()") Add Event
+table
+  thead
+    tr
+      th Name
+      th Type
+      th First Event Date
+      th Time Until Event
+      th Status
+
+      th.actions Actions
+
+  tbody
+    tr(ng-repeat="event in data | orderBy:'data.first_event_date':false | filter:filterModel:strict")
+      td(ng-bind="event.data.name")
+      td(ng-bind="event.data.event_type")
+      td
+        .time(ng-bind="event.data.first_event_date | amDateFormat: 'h:mm a'")
+        span(ng-bind="event.data.first_event_date | amDateFormat: 'dddd D'")
+        sup(ng-bind="event.data.first_event_date | amDateFormat: 'Do' | filterNumeric" )
+        span(ng-bind="event.data.first_event_date | amDateFormat: ' of MMMM YYYY'" )
+      td(am-time-ago="event.data.first_event_date")
+      td(ng-bind="event.data.status")
+      td.actions
+        button.small.dark-accent(ui-sref="authenticated.main.event.view({event_id: event.data.id})") View
+        //button.small.dark-accent(ui-sref="authenticated.main.event.confirmations({id: event.data.id})") Event Confirmations
+           //i.icon-thin-044_visability_view_watch_eye
+           //span
+        //button.small.dark-accent
+           i.icon-thin-253_x_remove_delete_close_exit
+           //span Delete

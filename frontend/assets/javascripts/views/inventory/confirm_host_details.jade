@@ -1,0 +1,32 @@
+div.flex-center
+   #steps
+      .step(data-desc="Menu").done 1
+      .step(data-desc="Drinks").done 2
+      .step(data-desc="Snacks").done 3
+      .step(data-desc="Parking").done 4
+      .step(data-desc="Details").active 5
+      .step(data-desc="Final Review") 6
+//div.toolbar
+//   button.dark-accent(ng-click="buildOptions()") Next
+//   button.grey(ui-sref="authenticated.main.inventory.confirmOptions.parking") Previous
+div.flex-center
+  div.panel
+    .top-bar
+      .title Event Specific Details
+    form(name="form" novalidate)
+      .field
+         label Instructions
+            textarea(placeholder="e.g: No peanuts / Needs disabled access" ng-model="Options.selectedOptions.selection.notes")
+      .field
+         label Host Details
+            textarea(placeholder="John Smith, 0418 277 332" ng-model="Options.selectedOptions.selection.host_details" required)
+      .field
+        label Host can order additional items
+          input(type="checkbox" ng-model="Options.selectedOptions.selection.hostCanOrderAdditionalItems")
+      .field.right
+         button.grey(ui-sref="authenticated.main.inventory.confirmOptions.parking") Previous
+         button.dark-accent(ng-click="buildOptions()" ng-disabled="form.$invalid") Next
+
+//div.toolbar
+   button.dark-accent(ng-click="buildOptions()") Next
+   button.grey(ui-sref="authenticated.main.inventory.confirmOptions.snacks") Previous

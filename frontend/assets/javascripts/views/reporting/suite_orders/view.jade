@@ -1,0 +1,42 @@
+.panel
+  .toolbar
+    .filters
+      .title(ng-bind="event.event_name")
+    .actions
+      button.dark-accent(ng-click="downloadExcel(event.id)") Download Excel
+  table
+    thead
+      tr
+        th #
+        th Suite Name
+        th Suite Contact
+        th Client Name
+        th Parking Tickets
+        th Menu
+        th Beverages
+        th Snacks
+        th Host
+        th.tiny Host Authorized to order additional items
+        th Notes
+    tbody
+      tr(ng-repeat="confirmation in event.confirmed_inventory_options | orderBy:'facility_number'" ng-class="!confirmation.is_attending && 'red'")
+        td {{ $index + 1 }}
+        td(ng-bind="confirmation.facility_name")
+        td(ng-bind="confirmation.company.manager.full_name")
+        td(ng-bind="confirmation.company.name")
+        td(ng-bind="confirmation.selection.parkingSpaces || 0")
+        td(ng-bind="confirmation.selection.menu.name")
+        td
+          div(ng-repeat="drink in confirmation.selection.drinks")
+            span {{ drink.name }}
+          div(ng-show="confirmation.selection.foodBeveragePairing") Beer And Wine Pairing
+          div(ng-show="confirmation.selection.dessertWinePairing") Dessert Wine Pairing
+          div(ng-show="confirmation.selection.standardDrinkList") Standard Drinks List
+
+        td
+          div(ng-repeat="snack in confirmation.selection.snacks")
+            span {{ snack.name + ' - ' + snack.count }}
+
+        td(ng-bind="confirmation.selection.host_details")
+        td(ng-bind="confirmation.selection.hostCanOrderAdditionalItems").tiny
+        td(ng-bind="confirmation.selection.notes")

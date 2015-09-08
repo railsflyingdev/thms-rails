@@ -1,0 +1,15 @@
+div.flex-center
+  div.panel.smallish
+    .top-bar
+      .title Login
+    form(name="form" novalidate="" autocomplete="on")
+       .nice-alert.invalid(ng-show="invalidLogin") Un-Authorized
+       .field
+          input(type="email" placeholder="Email" name="email" required ng-class="inputClass" ng-model="details.email" autofocus)
+       .field
+          input(type="password" placeholder="Password" ng-model="details.password" name="password" ng-minlength="6" required ng-class="inputClass")
+
+       .field.right
+          //button.grey(ui-sref="guest.password_reset_request" ng-if="invalidLogin") I forgot my password!
+          button.accent(type="submit" value="Login" ng-click="login(user)" ng-bind="loginBtnText" ng-disabled="inProgress || form.$invalid")
+    a(style="color: #555; font-size: 0.7em;" ui-sref="guest.password_reset_request") Reset Password

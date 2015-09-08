@@ -1,0 +1,15 @@
+#reviewInventoryOptions
+  div.flex-center
+    #steps
+      .step(data-desc="Menu").done 1
+      .step(data-desc="Drinks").done 2
+      .step(data-desc="Snacks").done 3
+      .step(data-desc="Parking").done 4
+      .step(data-desc="Details").done 5
+      .step(data-desc="Final Review").active 6
+  include shared/review
+
+  div.toolbar
+    .actions.full
+      button.grey(ui-sref="authenticated.main.inventory.confirmOptions.details") Previous
+      button.dark-accent(ng-click="confirmChoices()" ng-bind="confirmButtonText" ng-disabled="confirmButtonDisabled")

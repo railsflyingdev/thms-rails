@@ -1,0 +1,22 @@
+.field
+  input(type="text" placeholder="Address" ng-model="company.data.address1" required)
+.field
+  input(type="text" placeholder="Address 2" ng-model="company.data.address2")
+.inline-postcode
+  .suburb.field
+    input(type="text" placeholder="Suburb" ng-model="company.data.suburb" required)
+  .postcode.field
+    input(type="text" placeholder="Postcode" ng-model="company.data.postcode" required ng-minlength="4" ng-maxlength="4" ng-pattern="/^\\d+$/")
+.inline-state
+  .city.field
+    input(type="text" placeholder="City" ng-model="company.data.city" required)
+  .state.field
+    select(ng-model="company.data.state" required)
+      option(value="NSW") New South Wales
+      option(value="VIC") Victoria
+      option(value="QLD") Queensland
+      option(value="SA") South Australia
+      option(value="WA") Western Australia
+      option(value="ACT") Australian Capital Territory
+      option(value="NT") Northern Territory
+      option(value="TAS") Tasmania

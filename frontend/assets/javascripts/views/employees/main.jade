@@ -1,0 +1,16 @@
+div.toolbar
+   //button.dark-accent(ui-sref="authenticated.main.employee.add.new") Add Employee
+table
+   thead
+      tr
+         th Name
+         th Email
+         th Department
+         //th.actions Actions
+   tbody
+      tr(ng-repeat="user in data")
+         td(ng-bind="user.profile.first_name + ' ' +user.profile.last_name")
+         td(ng-bind="user.email")
+         td(ng-bind="user.department.name")
+         //td.actions
+            //button.small.dark-accent View

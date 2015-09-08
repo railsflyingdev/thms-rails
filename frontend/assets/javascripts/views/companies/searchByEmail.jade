@@ -1,0 +1,8 @@
+div.panel
+   fieldset
+      legend Search By Email
+      .field
+         input(type='text' placeholder='admin@company.com.au' ng-model='email')
+      .field.right
+         button.grey(ui-sref="authenticated.main.clients.add") Manually Add
+         button.dark-accent(ng-click='search(email)') Search

@@ -1,0 +1,532 @@
+@import "reset";
+@import "settings";
+@import "bourbon/bourbon";
+@import "neat/neat";
+@import "forms";
+@import "login";
+@import "main_navigation";
+@import "header_navigation";
+@import "small_alerts";
+@import "icons";
+@import "tables";
+@import "companies";
+@import "steps";
+@import "address_input";
+@import "view_details";
+@import "ng-repeat-animations";
+@import "options_confirmation";
+@import 'events/view';
+@import 'dashboard';
+
+
+
+@import 'bootstrap-mixins/mixins';
+@import 'bootstrap-mixins/variables';
+@import 'bootflat/bootflat/global';
+//@import 'bootstrap-mixins/modals';
+//@import 'bootflat/bootflat/modal';
+@import 'bootstrap-mixins/tooltip';
+@import 'bootflat/bootflat/tooltip';
+@import 'bootstrap-mixins/dropdowns';
+@import 'bootflat/bootflat/dropdown';
+
+@import 'bootstrap-mixins/popovers';
+@import 'bootflat/bootflat/popover';
+
+
+@import 'modal_overrides';
+
+@import 'modal_animations';
+
+@import 'accordions';
+
+@import 'tab_panel';
+
+@import 'teaser';
+@import 'humane';
+
+
+
+
+html, body {
+  height: 100%;
+  color: $body-font-color;
+}
+
+//@import "ui";
+//@import 'datetimepicker';
+
+#mainNav {
+  position: fixed;
+  width: $navbar-width;
+  height: 100%;
+  z-index: 301;
+}
+
+#content-outer > section#main {
+
+  margin-bottom: 10em;
+}
+
+#content-outer > main {
+
+  @include media(min-width 768px) {
+    margin-left: $navbar-width;
+  }
+
+  margin-top: rem($header-height);
+}
+
+header {
+  padding-left: 2rem;
+  @include media(min-width 768px) {
+    padding-left: 21rem;
+  }
+
+  position: fixed;
+  width: 100%;
+  z-index: 300;
+}
+
+body {
+  min-height: 100%;
+  height: auto !important;
+//  @include display(flex);
+//  @include flex-direction(column);
+  font-size: 16px;
+  font-family: 'Gotham Rounded SSm A', 'Gotham Rounded SSm B';
+  font-weight: 300;
+  font-style: normal;
+//  font-family: $body-font-family;
+//  font-family: "Gotham Rounded SSm A", "Gotham Rounded SSm B";
+  background-color: $body-background-color;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+}
+
+#content-outer {
+  @include display(flex);
+  @include flex(1);
+}
+
+#content-outer { height: 100vh }
+
+header {
+  height: em($header-height);
+  background-color: #fff;
+  border-bottom: 1px solid #dedede;
+  @include display(flex);
+  @include align-items(center);
+}
+
+#main > .panel {
+  margin-top: 1rem;
+}
+
+header > div.page-title {
+  @include flex(1);
+}
+
+//section#main { padding-left: 2rem }
+section#main {
+  padding: 1rem 2rem;
+}
+
+button, input[type="submit"] {
+  cursor: pointer;
+  @include flat-button();
+  &.caution {
+    @include flat-button(red);
+  }
+
+  &.full {
+    @include fill-parent;
+  }
+
+  &.accent {
+    @include flat-button($main-accent)
+  }
+  &.dark-accent {
+    @include flat-button($darkened-main-accent);
+    font-weight: bold;
+  }
+
+}
+
+// Get rid of annoying blue thingy
+:focus { outline: none; }
+
+main {
+  @include flex(1);
+//  background-color: $body-background-color;
+}
+
+div.toolbar {
+  @include outer-container;
+  margin-bottom: 1rem;
+
+  div.filters {
+    @include span-columns(7);
+
+    div.field.search {
+      @include span-columns(4 of 7);
+    }
+
+    div.field.select {
+      &.small {
+        @include span-columns(2 of 7);
+      }
+    }
+  }
+
+  div.actions {
+    text-align: right;
+    @include span-columns(4);
+    &.full {
+      @include fill-parent();
+      @include shift(0);
+    }
+    @include shift(1);
+  }
+
+  button + button {
+    margin-left: 0.8em;
+  }
+}
+
+
+div.flex-toolbar {
+  @include display(flex);
+  @include align-items(center);
+  margin-bottom: 1.1em;
+  div.title { @include flex(2) }
+  div.field { @include flex(4) }
+  .title, .field { margin-bottom: 0 }
+}
+
+.inner-align-right {
+  text-align: right;
+}
+
+div.panel {
+  @include flex(1);
+  padding: 3rem;
+  background-color: white;
+  border: 1px solid darken($body-background-color, 10)
+}
+
+/* Make clicks pass-through */
+#nprogress {
+  pointer-events: none;
+}
+
+#nprogress .bar {
+  background: $main-accent;
+
+  position: fixed;
+  z-index: 1031;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 2px;
+}
+
+/* Fancy blur effect */
+#nprogress .peg {
+  display: block;
+  position: absolute;
+  right: 0px;
+  width: 100px;
+  height: 100%;
+  box-shadow: 0 0 10px $main-accent, 0 0 5px $main-accent;
+  opacity: 1.0;
+
+  -webkit-transform: rotate(3deg) translate(0px, -4px);
+  -ms-transform: rotate(3deg) translate(0px, -4px);
+  transform: rotate(3deg) translate(0px, -4px);
+}
+
+/* Remove these to get rid of the spinner */
+#nprogress .spinner {
+  display: block;
+  position: fixed;
+  z-index: 1031;
+//  top: 2.2rem;
+//  right: 13rem;
+  bottom: 1rem;
+  right: 1rem;
+}
+
+#nprogress .spinner-icon {
+  width: 18px;
+  height: 18px;
+  box-sizing: border-box;
+  border: solid 2px transparent;
+  border-top-color: $main-accent;
+  border-left-color: $main-accent;
+  border-radius: 50%;
+
+  @include animation(nprogress-spinner 400ms linear infinite);
+}
+
+@-webkit-keyframes nprogress-spinner {
+  0%   { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+@keyframes nprogress-spinner {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+.ng-enter.animate-form, .ng-leave.animate-form {
+//  position: absolute;
+//  left: 0;
+//  right: 0;
+  @include transform(translateZ(0));
+  @include transition(all .5s ease-in-out);
+}
+
+.ng-enter.animate-form {
+  opacity: 0;
+  @include transform(scale3d(0.5, 0.5, 0.5));
+}
+
+.ng-enter-active.animate-form {
+  opacity: 1;
+  @include transform(scale3d(1, 1, 1));
+}
+
+.ng-leave.animate-form {
+  opacity: 1;
+  @include transform(translate3d(0, 0, 0));
+}
+
+.ng-leave-active.animate-form {
+  opacity: 0;
+  display: none;
+  @include transform(translate3d(10000px, 0, 0));
+}
+
+// fade
+
+[ui-view].ng-enter.animate-fade, [ui-view].ng-leave.animate-fade {
+  @include transition(all 0.5s ease-in-out);
+  @include transform(translateZ(0));
+}
+
+[ui-view].ng-enter.animate-fade {
+  opacity: 0;
+}
+
+[ui-view].ng-enter-active.animate-fade {
+  opacity: 1;
+
+}
+
+[ui-view].ng-leave.animate-fade{
+  opacity: 1;
+
+}
+
+[ui-view].ng-leave-active.animate-fade {
+  opacity: 0;
+  display: none;
+}
+
+[ui-sref] {
+  cursor: pointer;
+}
+
+//.clickable {
+//  cursor: pointer;
+//}
+
+
+
+.paper-stack {
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  position: relative;
+  &:before, &:after {
+    content: "";
+    height: 98%;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+  }
+
+  &:before {
+    background: #fafafa;
+    box-shadow: 0 0 8px rgba(0,0,0,0.2);
+    left: -5px;
+    top: 4px;
+    @include transform(rotate(-2.5deg));
+  }
+
+  &:after {
+    background: #f6f6f6;
+    box-shadow: 0 0 3px rgba(0,0,0,0.2);
+    right: -3px;
+    top: 1px;
+    @include transform(rotate(1.4deg));
+  }
+
+}
+
+
+
+small, sub, sup { font-size: .83em }
+sub { vertical-align: sub }
+sup { vertical-align: super }
+
+.ie-visible { display: none }
+html.ie {
+  .ie-visible { display: inherit; }
+  div.ie-panel {
+    width: 35%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3em;
+    text-align: center;
+//    background-color: red;
+    line-height: 1.2;
+    border: 1px solid red;
+    padding: 2em;
+  }
+}
+
+// Shadow DOM Styling
+//input  /deep/ #placeholder {
+//  color: red
+//}
+
+.bold {
+  font-weight: bold;
+}
+
+.reporting {
+  table { font-size: 1em; line-height: 1.2 }
+}
+
+.masquerade {
+  .title { font-size: 1.6em }
+}
+
+div.employees-table {
+  overflow: scroll;
+  height: 600px;
+
+  div.record {
+    @include display(flex);
+    border-bottom: 1px solid #efefef;
+    padding-bottom: 0.7em;
+    margin-bottom: 1em;
+
+    &:last-of-type { border-bottom: none }
+
+    & > .details {
+      @include flex(3);
+      line-height: 1.3em;
+
+      & > .name {
+        font-weight: bold;
+        color: #444;
+      }
+
+      & > .company {
+
+      }
+
+      & > .email {
+        font-size: 0.7em;
+        font-weight: lighter;
+        color: #666;
+      }
+    }
+
+    & > .actions {
+      @include flex(1);
+      @include display(flex);
+      @include align-items(center);
+
+      button {
+
+        @include display(flex);
+        @include align-items(center);
+        i { font-size: 1.7em }
+      }
+    }
+  }
+}
+
+
+td.actions {
+  button {
+    margin-left: 0.8em;
+    margin-bottom: 0.4em;
+
+  }
+
+  &.block button {
+    display: block;
+  }
+}
+
+div.flex-toolbar {
+  button + button {
+    margin-left: 0.8em;
+  }
+}
+
+@keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+
+#masqueradeToolbar {
+  @include background-image(
+        linear-gradient(45deg, rgba(255, 255, 255, .2) 25%, transparent 25%, transparent 50%,
+                rgba(255, 255, 255, .2) 50%, rgba(255, 255, 255, .2) 75%, transparent 75%, transparent));
+
+  @include animation(animate-stripes 0.6s linear infinite);
+  @include transition(top 0.2s ease-in-out);
+
+  &.ng-hide {
+    top: -$masquerade-bar-height;
+  }
+
+  &.ng-hide-add,
+  &.ng-hide-remove {
+    display: block !important;
+  }
+
+  position: fixed;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  background-color: #f90;
+  color: white;
+  font-weight: bold;
+  padding: 1em 0;
+  height: $masquerade-bar-height;
+  z-index: 99999;
+  & .tooltip { z-index: 99999 }
+  a {
+    text-shadow: 0px 0px 7px rgba(190,190,190,0.3);
+  }
+}
+
+#masqueradeToolbar + #content-outer { margin-top: $masquerade-bar-height; @include transition(margin 0.2s ease-in-out) }
+#masqueradeToolbar.ng-hide + #content-outer { margin-top: 0 }
+
+
+
+

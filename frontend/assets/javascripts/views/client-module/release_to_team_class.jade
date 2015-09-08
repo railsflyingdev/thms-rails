@@ -1,0 +1,27 @@
+div.flex-center
+  #steps
+    .step(data-desc="Identify Class").active 1
+    .step(data-desc="Allocate To Business Units") 2
+    .step(data-desc="Release Expiry") 3
+    .step(data-desc="Automate Invitation") 4
+    //.step(data-desc="Facility Lease") 5
+.flex-center
+  .panel
+    .top-bar
+      .title Event Class
+    hr
+    .alert-info This identifies the class of a ticket. Only users at or above this class get access to these tickets to request.
+    form(novalidate name="form")
+      .field
+        select(ng-model='event_class')
+          option(ng-value="circus") Class A
+          option(ng-value="live_event") Class B
+          option(ng-value="live_event") Class C
+          option(ng-value="live_event") Class D
+          option(selected="" value="") Select Event Class
+
+      //include ../companies/forms/details
+    br
+    .toolbar
+      .actions.full
+        button.dark-accent(ui-sref="authenticated.main.inventory.release.allocateBusinessUnits" ng-disabled="form.$invalid") Next

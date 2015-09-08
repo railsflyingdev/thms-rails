@@ -1,0 +1,56 @@
+div.toolbar
+div.form.add
+  form
+    .flex-left
+      div.panel
+        fieldset
+          legend Current Company Details
+          .field
+            label Company Name
+              input(type="text" disabled ng-model="Auth.currentUser.company.name")
+          .field
+            label Company Type
+              input(type="text" disabled ng-model="Auth.currentUser.company.type")
+          .field
+            label Company ID
+              input(type="text" disabled ng-model="Auth.currentUser.company.id")
+      .panel
+        .flex-toolbar
+          .title Manual Ticketing
+          .field.search
+            input(type="search" placeholder="Search" ng-model="filterModel" autofocus)
+        table
+          thead
+            tr
+              th
+              th Client Name
+              th Event Name
+              th Event Date
+              th Facility Name
+              th Ticket Count
+              th.actions Actions
+          tbody
+            tr(ng-repeat="item in inventory | orderBy:'event_date_id':false | filter:filterModel:strict track by item.id").repeat-animation
+              td
+                input(type="checkbox" ng-model="item.done")
+              td(ng-bind="item.client_name")
+              td(ng-bind="item.event_name")
+              td(ng-bind="item.event_start | amDateFormat:'DD/MM/YYYY h:mm a'")
+              td(ng-bind="item.facility_name")
+              td(ng-bind="item.ticket_count")
+              td.actions
+                button.dark-accent.small(ng-click="createTickets(item)") Create Tickets
+
+    .flex-right
+      div.panel
+        fieldset
+          legend Current User Permissions
+        .field(ng-repeat="(name, permission) in Auth.currentUser.permissions")
+          label(ng-bind="name")
+          input(type="text" disabled ng-model="permission")
+      div.panel
+        fieldset
+          legend User
+          .field
+            label Access Token
+            input(type="text" disabled ng-model="Auth.accessToken")

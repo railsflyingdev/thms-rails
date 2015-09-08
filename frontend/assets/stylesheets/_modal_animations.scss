@@ -1,0 +1,398 @@
+
+/* Effect 1: Fade in and scale up */
+.modal.fade.effect-1 .modal-dialog {
+  @include transform(scale(0.7));
+  @include transition(all 0.3s);
+  opacity: 0;
+}
+
+.modal.in.effect-1 .modal-dialog {
+  @include transform(scale(1));
+  opacity: 1;
+}
+
+/* Effect 2: Slide from the right */
+.modal.fade.effect-2 .modal-dialog {
+  @include transform(translateX(20%));
+  @include transition(all 0.3s cubic-bezier(0.25, 0.5, 0.5, 0.9));
+  opacity: 0;
+}
+
+.modal.in.effect-2 .modal-dialog {
+  @include transform(translateX(0));
+  opacity: 1;
+}
+
+/* Effect 3: Slide from the bottom */
+.modal.effect-3.fade .modal-dialog {
+  @include transform(translateY(20%));
+  @include transition(all 0.3s);
+  opacity: 0;
+}
+
+.modal.in.effect-3 .modal-dialog {
+  @include transform(translateY(0));
+  opacity: 1;
+}
+
+/* Effect 4: Newspaper */
+.modal.fade.effect-4 .modal-dialog {
+  @include transform(scale(0) rotate(720deg));
+  opacity: 0;
+}
+
+.modal.in.effect-4 ~ .modal-backdrop,
+.modal.in.effect-4 .modal-dialog {
+  @include transition(all 0.5s);
+}
+
+.modal.in.effect-4 .modal-dialog {
+  @include transform(scale(1) rotate(0deg));
+  opacity: 1;
+}
+
+/* Effect 5: fall */
+.modal.effect-5.fade {
+  @include perspective(1300px);
+}
+
+.modal.fade.effect-5 .modal-dialog {
+  @include transform-style(preserve-3d);
+  @include transform(translateZ(600px) rotateX(20deg));
+  opacity: 0;
+}
+
+.modal.in.effect-5 .modal-dialog {
+  @include transition(all 0.3s ease-in);
+  @include transform(translateZ(0px) rotateX(0deg));
+  opacity: 1;
+}
+
+/* Effect 6: side fall */
+.modal.fade.effect-6 {
+  @include perspective(1300px);
+}
+
+.modal.fade.effect-6 .modal-dialog {
+  @include transform-style(preserve-3d);
+  @include transform(translate(30%) translateZ(600px) rotate(10deg));
+  opacity: 0;
+}
+
+.modal.in.effect-6 .modal-dialog {
+  @include transition(all 0.3s ease-in);
+  @include transform(translate(0%) translateZ(0) rotate(0deg));
+  opacity: 1;
+}
+
+/* Effect 7:  slide and stick to top */
+.modal.effect-7.fade {
+  top: 0;
+  @include transform(translateY(-50%));
+}
+
+.modal.fade.effect-7 .modal-dialog {
+  @include transform(translateY(-200%));
+  @include transition(all .3s);
+  opacity: 0;
+}
+
+.modal.in.effect-7 .modal-dialog {
+  @include transform(translateY(0%));
+  border-radius: 0 0 3px 3px;
+  opacity: 1;
+}
+
+/* Effect 8: 3D flip horizontal */
+.modal.fade.effect-8 {
+  @include perspective(1300px);
+}
+
+.modal.fade.effect-8 .modal-dialog {
+  @include transform-style(preserve-3d);
+  @include transform(rotateY(-70deg));
+  @include transition(all 0.3s);
+  opacity: 0;
+}
+
+.modal.in.effect-8 .modal-dialog {
+  @include transform(rotateY(0deg));
+  opacity: 1;
+}
+
+/* Effect 9: 3D flip vertical */
+.modal.fade.effect-9 {
+  @include perspective(1300px);
+}
+
+.modal.fade.effect-9 .modal-dialog {
+  @include transform-style(preserve-3d);
+  @include transform(rotateX(-70deg));
+  @include transition(all 0.3s);
+  opacity: 0;
+}
+
+.modal.in.effect-9 .modal-dialog {
+  @include transform(rotateX(0deg));
+  opacity: 1;
+}
+
+/* Effect 10: 3D sign */
+.modal.fade.effect-10 {
+  @include perspective(1300px);
+}
+
+.modal.fade.effect-10 .modal-dialog {
+  @include transform-style(preserve-3d);
+  @include transform(rotateX(-60deg));
+  @include transform-origin(50% 0);
+  @include transition(all 0.3s);
+  opacity: 0;
+}
+
+.modal.in.effect-10 .modal-dialog {
+  @include transform(rotateX(0deg));
+  opacity: 1;
+}
+
+/* Effect 11: Super scaled */
+.modal.fade.effect-11 .modal-dialog {
+  @include transform(scale(2));
+  @include transition(all 0.3s);
+  opacity: 0;
+}
+
+.modal.in.effect-11 .modal-dialog {
+  @include transform(scale(1));
+  opacity: 1;
+}
+
+/* Effect 12:  Just me */
+.modal.fade.effect-12 .modal-dialog {
+  @include transform(scale(0.8));
+  @include transition(all 0.3s);
+  opacity: 0;
+}
+
+.modal.in.effect-12 ~ .modal-backdrop {
+  background-color: #e74c3c !important;
+  opacity: 0.9;
+}
+
+.modal.fade.effect-12 .modal-dialog {
+  background: transparent;
+}
+
+.modal.in.effect-12 .modal-dialog {
+  @include transform(scale(1));
+  opacity: 1;
+}
+
+/* Effect 13: 3D slit */
+.modal.fade.effect-13 {
+  @include perspective(1300px);
+}
+
+.modal.fade.effect-13 .modal-dialog {
+  @include transform-style(preserve-3d);
+  @include transform(translateZ(-3000px) rotateY(90deg));
+  opacity: 0;
+}
+
+.modal.in.effect-13 .modal-dialog {
+  @include animation(slit .7s forwards ease-out);
+}
+
+
+@-webkit-keyframes slit {
+  50% { -webkit-transform: translateZ(-250px) rotateY(89deg); opacity: .5; -webkit-animation-timing-function: ease-out;}
+  100% { -webkit-transform: translateZ(0) rotateY(0deg); opacity: 1; }
+}
+
+@-moz-keyframes slit {
+  50% { -moz-transform: translateZ(-250px) rotateY(89deg); opacity: .5; -moz-animation-timing-function: ease-out;}
+  100% { -moz-transform: translateZ(0) rotateY(0deg); opacity: 1; }
+}
+
+@keyframes slit {
+  50% { transform: translateZ(-250px) rotateY(89deg); opacity: 1; animation-timing-function: ease-in;}
+  100% { transform: translateZ(0) rotateY(0deg); opacity: 1; }
+}
+
+/* Effect 14:  3D Rotate from bottom */
+.modal.fade.effect-14 {
+  @include perspective(1300px);
+}
+
+.modal.fade.effect-14 .modal-dialog {
+  @include transform-style(preserve-3d);
+  @include transform(translateY(100%) rotateX(90deg));
+  @include transform-origin(0 100%);
+  @include transition(all 0.3s ease-out);
+  opacity: 0;
+}
+
+.modal.in.effect-14 .modal-dialog {
+  @include transform(translateY(0%) rotateX(0deg));
+  opacity: 1;
+}
+
+/* Effect 15:  3D Rotate in from left */
+.modal.fade.effect-15 {
+  @include perspective(1300px);
+}
+
+.modal.fade.effect-15 .modal-dialog {
+  @include transform-style(preserve-3d);
+  @include transform(translateZ(100px) translateX(-30%) rotateY(90deg));
+  @include transform-origin(0 100%);
+  @include transition(all 0.3s);
+  opacity: 0;
+}
+
+.modal.in.effect-15 .modal-dialog {
+  @include transform(translateZ(0px) translateX(0%) rotateY(0deg));
+  opacity: 1;
+}
+
+/* Effect 16:  Blur */
+.modal.in.effect-16 ~ .modal-backdrop {
+  background: rgba(180,46,32,0.5);
+}
+
+.modal.in.effect-16 ~ .container {
+  @include filter(blur(3px));
+}
+
+.modal.fade.effect-16 .modal-dialog {
+  @include transform(translateY(-5%));
+  opacity: 0;
+}
+
+.modal.in.effect-16 ~ .container,
+.modal.effect-16 .modal-dialog {
+  @include transition(all 0.3s);
+}
+
+.modal.in.effect-16 .modal-dialog {
+  @include transform(translateY(0));
+  opacity: 1;
+}
+
+/* Effect 17:  Slide in from bottom with perspective on container */
+.modal.in.effect-17 ~ .container {
+  height: 100%;
+  overflow: hidden;
+  @include transition(transform 0.3s);
+}
+
+.modal.in.effect-17 ~ .container,
+.modal.in.effect-17 ~ .modal-backdrop  {
+  @include transform(rotateX(-2deg));
+  @include transform-origin(50% 0%);
+  @include transform-style(preserve-3d);
+}
+
+.modal.fade.effect-17 .modal-dialog {
+  @include transform(translateY(200%));
+  opacity: 0;
+}
+
+.modal.in.effect-17 .modal-dialog {
+  @include transition(all 0.3s 0.2s);
+  @include transform(translateY(0));
+  opacity: 1;
+}
+
+/* Effect 18:  Slide from right with perspective on container */
+.modal.in.effect-18 ~ .container {
+  height: 100%;
+  overflow: hidden;
+}
+
+.modal.in.effect-18 ~ .modal-backdrop {
+  background: rgba(143,27,15,0.8);
+  @include transition(all 0.5s);
+}
+
+.modal.in.effect-18 ~ .container,
+.modal.in.effect-18 ~ .modal-backdrop {
+  @include transform-style(preserve-3d);
+  @include transform-origin(0% 50%);
+  @include animation(rotateRightSideFirst 0.5s forwards ease-in);
+}
+
+@-webkit-keyframes rotateRightSideFirst {
+  50% { -webkit-transform: translateZ(-50px) rotateY(5deg); -webkit-animation-timing-function: ease-out; }
+  100% { -webkit-transform: translateZ(-200px); }
+}
+
+@-moz-keyframes rotateRightSideFirst {
+  50% { -moz-transform: translateZ(-50px) rotateY(5deg); -moz-animation-timing-function: ease-out; }
+  100% { -moz-transform: translateZ(-200px); }
+}
+
+@keyframes rotateRightSideFirst {
+  50% { transform: translateZ(-50px) rotateY(5deg); animation-timing-function: ease-out; }
+  100% { transform: translateZ(-200px); }
+}
+
+.modal.fade.effect-18 .modal-dialog {
+  @include transform(translateX(200%));
+  opacity: 0;
+}
+
+.modal.in.effect-18 .modal-dialog {
+  @include transform(translateX(0));
+  @include transition(all 0.5s 0.1s);
+  opacity: 1;
+}
+
+/* Effect 19:  Slip in from the top with perspective on container */
+.modal.in.effect-19 ~ .container {
+  height: 100%;
+  overflow: hidden;
+}
+
+.modal.in.effect-19 ~ .modal-backdrop {
+  @include transition(all 0.5s);
+}
+
+.modal.in.effect-19 ~ .container,
+.modal.in.effect-19 ~ .modal-backdrop {
+  @include transform-style(preserve-3d);
+  @include transform-origin(50% 100%);
+  @include animation(OpenTop 0.5s forwards ease-in);
+}
+
+@-webkit-keyframes OpenTop {
+  50% {
+    -webkit-transform: rotateX(10deg);
+    -webkit-animation-timing-function: ease-out;
+  }
+}
+
+@-moz-keyframes OpenTop {
+  50% {
+    -moz-transform: rotateX(10deg);
+    -moz-animation-timing-function: ease-out;
+  }
+}
+
+@keyframes OpenTop {
+  50% {
+    transform: rotateX(10deg);
+    animation-timing-function: ease-out;
+  }
+}
+
+.modal.fade.effect-19 .modal-dialog {
+  @include transform(translateY(-200%));
+  opacity: 0;
+}
+
+.modal.in.effect-19 .modal-dialog {
+  @include transform(translateY(0));
+  @include transition(all 0.5s 0.1s);
+  opacity: 1;
+}

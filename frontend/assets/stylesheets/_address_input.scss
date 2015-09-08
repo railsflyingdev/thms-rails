@@ -1,0 +1,27 @@
+form {
+  .inline-postcode {
+    @include display(flex);
+    .suburb { @include flex(2); margin-right: 2rem }
+    .postcode { @include flex(1); }
+  }
+
+  .inline-state {
+    @include display(flex);
+    .city { @include flex(2); margin-right: 2rem }
+    .state { @include flex(3) }
+  }
+
+  .inline-numbers {
+    @include display(flex);
+    .field {
+      @include flex(1);
+      margin-right: 2rem;
+      &:last-of-type { margin-right: 0 }
+    }
+  }
+
+  input, select, textarea {
+    font-family: $form-font-family;
+    font-weight: $form-font-weight;
+  }
+}

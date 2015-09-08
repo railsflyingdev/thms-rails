@@ -1,0 +1,18 @@
+.panel
+  table(sticky-header)
+    thead
+      tr
+        th #
+        th Suite Name
+        th Suite Contact
+        th Client Name
+        th Contact Email
+        th Contact Phone
+    tbody
+      tr(ng-repeat="person in data | orderBy:'facility_number'")
+        td {{ $index + 1 }}
+        td(ng-bind="person.facility_name")
+        td(ng-bind="person.client_contact")
+        td(ng-bind="person.client_name")
+        td(ng-bind="person.client_email")
+        td(ng-bind="person.client_phone")

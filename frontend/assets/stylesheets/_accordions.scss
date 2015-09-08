@@ -1,0 +1,34 @@
+
+
+// Collapsable panels (aka, accordion)
+//
+// Wrap a series of panels in `.panel-group` to turn them into an accordion with
+// the help of our collapse JavaScript plugin.
+
+.panel-group {
+  .panel {
+    overflow: hidden;
+    & + .panel {
+      margin-top: 2rem;
+    }
+  }
+
+}
+
+
+
+.panel-collapse {
+  @include transition(height 0.3s ease-in-out);
+  .panel-body {
+    opacity: 0;
+
+  }
+
+  &.in {
+    .panel-body {
+      opacity: 1;
+      @include transition(opacity 0.1s)
+    }
+
+  }
+}

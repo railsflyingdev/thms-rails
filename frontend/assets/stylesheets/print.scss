@@ -1,0 +1,15 @@
+@import 'bourbon/bourbon';
+@import 'neat/neat';
+@import 'tables';
+@import 'reset';
+
+body {
+  font-family: $body-font-family;
+}
+
+header, nav#main { display: none !important; }
+main { display: block }
+
+.actions {
+  display: none !important;
+}

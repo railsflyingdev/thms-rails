@@ -1,0 +1,93 @@
+#steps {
+  @include display(flex);
+}
+
+$progress-step-size: 2rem;
+$progress-font-size: 0.875rem;
+
+.step {
+  width: $progress-step-size;
+  height: $progress-step-size;
+  //  padding: $progress-step-size / 4 ;
+  background-color: $white;
+  display: inline-block;
+  border: 4px solid transparent;
+  border-radius: 50%;
+  font-weight: 400;
+  font-family: 'Numbers Greenback A', 'Numbers Greenback B';
+  line-height: $progress-step-size - $progress-font-size;
+  font-size: $progress-font-size;
+  text-align: center;
+}
+
+.step > span {
+  //  @include display(flex);
+  @include flex(1);
+}
+.step:first-child {
+  //  line-height: $progress-step-size - $progress-font-size + 0.5rem;
+  &:after {
+    //    @include transform(translate(-$progress-step-size, rem(-1)));
+  }
+
+  &:before {
+    width: 1px;
+    height: rem(3);
+    display: block;
+    background-color: $body-background-color !important;
+    font-family: $body-font-family;
+    content: '';
+    @include transform(translate(-$progress-step-size, rem(-1)));
+  }
+
+}
+
+.step:nth-child(n+2) {
+  margin: 0 0 0 6.3rem;
+  //  transform: translate(0, rem(-4));
+}
+.step:nth-child(n+2):before {
+  width: 7rem;
+  height: rem(3);
+  display: block;
+  background-color: $white;
+  @include transform(translate(-7rem, $progress-step-size/3));
+  content: '';
+}
+.step:after {
+  width: $progress-step-size * 3;
+  display: block;
+  @include transform(translate(-$progress-step-size, $progress-step-size/2));
+  font-family: $body-font-family;
+  //  color: $grey;
+  color: #555;
+  content: attr(data-desc);
+  font-weight: 400;
+  font-size: 0.85rem;
+}
+
+.step.active {
+  border-color: $main-accent;
+  color: $main-accent;
+}
+
+.step.active + .step:before {
+  @include transform(translate(-6.5rem, $progress-step-size/3));
+}
+.step.active:before {
+  //  background: linear-gradient(to right, $white 0%,
+  //          $main-accent 100%);
+  background-color: $main-accent;
+}
+.step.active:after {
+  color: $main-accent;
+}
+.step.done {
+  background-color: $main-accent;
+  border-color: $main-accent;
+
+  color: $white;
+}
+.step.done:nth-child(n+2):before {
+  background-color: $main-accent;
+}

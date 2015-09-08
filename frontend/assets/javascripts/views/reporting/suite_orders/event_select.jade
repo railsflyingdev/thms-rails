@@ -1,0 +1,11 @@
+div(ng-repeat="event in events")
+  .title(ng-bind="event.name")
+  hr
+  div.flex-panel-grid.quad
+    div.category.panel(ng-repeat="date in event.dates | orderBy:'start'" ui-sref="authenticated.main.reporting.suiteOrders.view({id:date.id})")
+      .top-bar
+        .title
+          span(ng-bind="date.start | amDateFormat: 'D'")
+          sup(ng-bind="date.start | amDateFormat: 'Do' | filterNumeric" )
+          span(ng-bind="date.start | amDateFormat: ' MMMM YYYY'" )
+          .time(ng-bind="date.start | amDateFormat: 'h:mm a'")

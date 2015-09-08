@@ -1,0 +1,19 @@
+div.flex-center
+  #steps
+    .step(data-desc="Company Name").done 1
+    .step(data-desc="Company Address").done 2
+    .step(data-desc="Platform Config").done 3
+    .step(data-desc="Company Administrator").active 4
+    //.step(data-desc="Facility Lease") 5
+.flex-center
+  .panel
+    .top-bar
+      .title Company Administrator
+    form(name="admin" novalidate)
+      .field
+        input(type="email" placeholder="Email" ng-model="admin.email")
+    br
+    .toolbar
+      .actions.full
+        button.grey(ui-sref="authenticated.main.clients.add.config") Previous
+        button.dark-accent(ng-click="save(company.data)" ng-disabled="admin.$invalid") Save

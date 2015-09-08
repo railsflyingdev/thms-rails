@@ -1,0 +1,16 @@
+.tabbed-panel
+  form(name="editForm" novalidate)
+    tabset
+      tab(heading="Details")
+        include forms/details
+        include forms/address
+      tab(heading="Notifications")
+        //form
+        include forms/notifications
+      tab(heading="Platform Config")
+        //form
+        include forms/config
+
+  hr
+  .modal-footer
+    button.dark-accent.full(ng-disabled="editForm.$invalid" ng-click="save()") Save Changes

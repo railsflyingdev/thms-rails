@@ -1,0 +1,34 @@
+div.toolbar
+  .filters
+    .field.search
+      input(type="text" placeholder="Name or Company" ng-model="filterValue" ng-change="updateFilter()" autofocus)
+    //.field
+      select
+        option(value="name") Event Name
+        option(value="current_leasee.name") Company Name
+
+  .actions
+    button.dark-accent(ng-click="newFacility()") Add Facility
+   //button.dark-accent(ui-sref="authenticated.main.facility.add.new") Add Facility
+table
+   thead
+      tr
+         th Name
+         th Type
+         th Capacity
+         th.actions Company
+         th.actions Actions
+
+   tbody
+      tr(ng-repeat="facility in data | filter:filterModel")
+         td(ng-bind="facility.data.name")
+         td(ng-bind="facility.data.facility_type")
+         td(ng-bind="facility.data.capacity")
+         td.actions(ng-bind="facility.data.current_leasee_name")
+         td.actions
+            button.small.dark-accent(ui-sref="authenticated.main.facility.view({facility_id: facility.data.id})") View
+               //i.icon-thin-044_visability_view_watch_eye
+               //span View
+            //button.small.dark-accent
+               //i.icon-thin-253_x_remove_delete_close_exit
+               //span Delete

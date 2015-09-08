@@ -1,0 +1,14 @@
+.panel
+  .top-bar
+    .title Guest Names
+  p(style="margin-bottom: 1em; font-size:0.8em; color: #555;") If no guest data currently exists, just click save
+  form(name="form" novalidate)
+    .field(ng-repeat="guest in guestList")
+      input(type="text" placeholder="Guest Name" autofocus ng-model="guest.name")
+    .field.right
+      button.grey.outline(ng-click="addNewGuestName()")
+        i.icon-thin-251_plus_add
+        span Add Guest Name
+  hr
+  .modal-footer
+    button.dark-accent.full(ng-click="save()") Save

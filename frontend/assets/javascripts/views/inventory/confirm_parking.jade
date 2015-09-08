@@ -1,0 +1,20 @@
+div.flex-center
+   #steps
+      .step(data-desc="Menu").done 1
+      .step(data-desc="Drinks").done 2
+      .step(data-desc="Snacks").done 3
+      .step(data-desc="Parking").active 4
+      .step(data-desc="Details") 5
+      .step(data-desc="Final Review") 6
+div.flex-center
+   div.panel#parking
+      .top-bar
+         .title P1 Prepaid Parking Requests
+      .field
+         input(type="text" placeholder="0" ng-model="Options.selectedOptions.selection.parkingSpaces")
+      small $25 per parking space
+
+div.toolbar
+  .actions.full
+     button.grey(ui-sref="authenticated.main.inventory.confirmOptions.snacks") Previous
+     button.dark-accent(ui-sref="authenticated.main.inventory.confirmOptions.details") Next

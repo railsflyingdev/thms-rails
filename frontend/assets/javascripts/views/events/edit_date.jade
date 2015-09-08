@@ -1,0 +1,14 @@
+.tabbed-panel
+  form(name="editForm" novalidate)
+    tabset
+      tab(heading="Date")
+        include forms/date
+      tab(heading="Attachments")
+        form
+          include forms/attachments
+      tab(heading="Ticketing")
+        form
+          include forms/ticketing
+  hr
+  .modal-footer
+    button.dark-accent.full(ng-disabled="editForm.$invalid" ng-click="save(event)") Save Date

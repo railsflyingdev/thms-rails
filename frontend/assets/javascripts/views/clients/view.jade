@@ -1,0 +1,73 @@
+#event-view
+  .row
+    .panel
+      //.top-bar
+        button.small.grey(ng-click="eventEditing = true" ng-hide="eventEditing") Edit
+      .details
+        .top-bar
+          .title(ng-bind="company.data.name" ng-if="company.data.name")
+          .actions
+            button.small.grey(ng-click="editCompany()") Edit
+        .info-pair
+          .lead Address:
+          .data
+            div(ng-bind="company.data.address1")
+            div(ng-bind="company.data.address2")
+            div(ng-bind="company.data.suburb")
+            div(ng-bind="company.data.city")
+            div {{ [company.data.state,company.data.postcode].join(' ') }}
+
+        .info-pair
+          .lead Contact:
+          .data
+            div.icon-thin-321_phone_telephone_call_ringing(ng-bind="company.data.phone" ng-if="company.data.phone")
+            div.icon-thin-181_printer(ng-bind="company.data.fax" ng-if="company.data.fax")
+
+        .info-pair
+          .lead Notifications:
+          .data
+            br
+            .info-pair
+              .lead SMS
+              .data(ng-bind="company.data.notify_sms ? 'Enabled' : 'Disabled'")
+            .info-pair
+              .lead Email
+              .data(ng-bind="company.data.notify_email ? 'Enabled' : 'Disabled'")
+
+        .info-pair
+          .lead Modules:
+          .data
+            br
+            .info-pair
+              .lead Guest
+              .data(ng-bind="company.data.guest_module ? 'Enabled' : 'Disabled'")
+        .info-pair
+          .lead Misc:
+          .data
+            br
+            .info-pair
+              .lead Ticket
+              .data(ng-bind="company.data.ticket_type")
+
+
+
+    .panel
+      .top-bar
+        .title Leased Facilities
+        button.small.grey.wide(ng-click="newLease()") New Lease
+      table
+        tbody
+          tr(ng-repeat="lease in leases")
+            td(ng-bind="lease.data.facility.name")
+            td
+              span(ng-bind="lease.data.start | amDateFormat: 'D'")
+              sup(ng-bind="lease.data.start | amDateFormat: 'Do' | filterNumeric" )
+              span(ng-bind="lease.data.start | amDateFormat: ' MMMM YYYY'" )
+              .time(ng-bind="lease.data.start | amDateFormat: 'h:mm a'")
+            td
+              span(ng-bind="lease.data.finish | amDateFormat: 'D'")
+              sup(ng-bind="lease.data.finish | amDateFormat: 'Do' | filterNumeric")
+              span(ng-bind="lease.data.finish | amDateFormat: ' MMMM YYYY'")
+              .time(ng-bind="lease.data.finish | amDateFormat: 'h:mm a'")
+            td.actions
+              button.small.dark-accent.outline(ng-click="editLease(lease)") Edit
