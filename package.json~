@@ -18,6 +18,9 @@
     "memcached": "^0.2.8",
     "moment": "^2.6.0",
     "morgan": "^1.0.0",
+    "node-uuid": "^1.4.1",
+    "pg": "^3.0.3",
+    "scrypt": "^3.0.1",
     "sleep": "^1.1.4",
     "xkcd-password": "^0.2.0"
   },
